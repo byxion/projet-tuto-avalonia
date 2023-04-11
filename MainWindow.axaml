@@ -1,0 +1,30 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:my="clr-namespace:MyApp"
+        x:Class="MyApp.MainWindow"
+        Title="Tableau"
+        Width="800"
+        Height="600">
+    
+    <StackPanel>
+        <Button Content="Ajouter" Click="AddButton_Click"/>
+        <DataGrid x:Name="dataGrid"
+                  AutoGenerateColumns="False"
+                  SelectedItem="{Binding SelectedItem}"
+                  Items="{Binding Items}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Grafcet" Binding="{Binding Grafcet}"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                <DataGridTextColumn Header="Libellé" Binding="{Binding Libelle}"/>
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="X" Click="DeleteButton_Click" Background="Transparent" Foreground="White"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+
+</Window>
