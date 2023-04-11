@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using Avalonia.Media;
+using Serilog;
 
 namespace MyApp.ViewModels
 {
@@ -24,9 +25,27 @@ namespace MyApp.ViewModels
             Items.Add(item);
         }
 
-        public string ?Grafcet { get; set; }
-        public string ?Type { get; set; }
-        public string ?Libelle { get; set; }
+        private string ?_grafcet;
+        public string ?Grafcet
+        {
+            get => _grafcet;
+            set{
+                _grafcet = value;
+            }
+        }
+        private string ?_type;
+        public string ?Type
+        {
+            get => _type;
+            set{ _type = value; }
+        }
+
+        private string ?_libelle;
+        public string ?Libelle
+        {
+            get => _libelle;
+            set{ _libelle = value; }
+        }
 
     }
 }

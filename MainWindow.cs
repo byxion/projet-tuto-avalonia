@@ -7,18 +7,15 @@ using MyApp.Views;
 using MyApp.ViewModels;
 using Avalonia.Media;
 using Serilog;
-using Serilog.Events;
+using Avalonia.Data;
 
 namespace MyApp;
 
 public class Item
 {
     public string ?Grafcet { get; set; }
-
     public string ?Type { get; set; }
-
     public string ?Libelle { get; set; }
-
     public IBrush ?Background { get; set; }
 }
 public partial class MainWindow : Window
@@ -33,6 +30,8 @@ public partial class MainWindow : Window
         this.AttachDevTools();
         #endif
         Items = new ObservableCollection<Item>();
+        // Ajouter un élément en dur dans le tableau pour tester l'affichage
+        Items.Add(new Item { Grafcet = "Grafcet1", Type = "Type1", Libelle = "Libellé1" });
         DataContext = this;
     }
 
@@ -60,10 +59,11 @@ public partial class MainWindow : Window
         Log.Error("Clear");
         foreach (var item in addItemWindow.ItemViewModel.Items)
         {
-            Log.Error("Add");
+            Log.Error("Add " + item.Grafcet);
             Items.Add(item);
         }
         Log.Error("End");
+        Log.CloseAndFlush();
     }
 
     private void DeleteButton_Click(object sender, RoutedEventArgs e)

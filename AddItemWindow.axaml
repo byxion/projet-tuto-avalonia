@@ -8,6 +8,6 @@
         <TextBox Text="{Binding Grafcet}" Watermark="Grafcet"/>
         <TextBox Text="{Binding Type}" Watermark="Type"/>
         <TextBox Text="{Binding Libelle}" Watermark="Libellé"/>
-        <Button Content="Ajouter" Command="{Binding OnAddButtonClick}"/>
+        <Button Content="Ajouter" Command="{Binding AddItem}"/>
     </StackPanel>
 </Window>
