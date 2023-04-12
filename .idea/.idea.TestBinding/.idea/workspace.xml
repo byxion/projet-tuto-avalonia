@@ -8,16 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e40ec04-fdb9-4e53-946c-ac5aef9c840c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TestBinding/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TestBinding/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TestBinding/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestBinding/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/App.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestBinding/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/Views/MainWindow.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestBinding/bin/Debug/net7.0/TestBinding.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/bin/Debug/net7.0/TestBinding.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestBinding/bin/Debug/net7.0/TestBinding.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/bin/Debug/net7.0/TestBinding.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/Avalonia/original.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/Avalonia/original.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/Avalonia/resources" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/Avalonia/resources" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/TestBinding.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/TestBinding.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/TestBinding.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/TestBinding.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +74,7 @@
       <updated>1681305841239</updated>
       <workItem from="1681305842451" duration="5084000" />
       <workItem from="1681312027757" duration="4000" />
-      <workItem from="1681312484431" duration="1590000" />
+      <workItem from="1681312484431" duration="1911000" />
     </task>
     <servers />
   </component>
