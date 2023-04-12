@@ -22,3 +22,15 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/Users/mateog./Desktop/Cobetix/Avalonia/projet_tuto/MyApp/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/mateog./Desktop/Cobetix/Avalonia/projet_tuto/MyApp/Test.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/mateog./Desktop/Cobetix/Avalonia/projet_tuto/MyApp/TestBinding/App.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/mateog./Desktop/Cobetix/Avalonia/projet_tuto/MyApp/TestBinding/Views/AddItemWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/mateog./Desktop/Cobetix/Avalonia/projet_tuto/MyApp/TestBinding/Views/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

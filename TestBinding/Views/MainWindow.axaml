@@ -52,11 +52,12 @@
                 <DataGrid Grid.Row="1" 
                           x:Name="DataGridItems"
                           AutoGenerateColumns="False" 
-                          Items="{Binding Items}">
+                          Items="{Binding Items}"
+                          SelectedItems="{Binding SelectedItem}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Grafcet" Binding="{Binding Items}" />
-                        <DataGridTextColumn Header="Type" Binding="{Binding Items}" />
-                        <DataGridTextColumn Header="Libellé" Binding="{Binding Items}" />
+                        <DataGridTextColumn Header="Grafcet" Binding="{Binding Grafcet}" />
+                        <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
+                        <DataGridTextColumn Header="Libellé" Binding="{Binding Libelle}" />
                         <DataGridTemplateColumn Header="">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

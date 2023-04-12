@@ -22,35 +22,80 @@ public class MainWindowViewModel : INotifyPropertyChanged
         }
     }
     
-    public ObservableCollection<Item> Items { get; }
+    private string _grafcet = "Grafcet 1";
+    public string Grafcet
+    {
+        get { return _grafcet; }
+        set
+        {
+            if (_grafcet != value)
+            {
+                _grafcet = value;
+                OnPropertyChanged(nameof(Grafcet));
+            }
+        }
+    }
+    
+    private string _type = "Type 1";
+    public string Type
+    {
+        get { return _type; }
+        set
+        {
+            if (_type != value)
+            {
+                _type = value;
+                OnPropertyChanged(nameof(Type));
+            }
+        }
+    }
+    
+    private string _libelle = "Libellé 1";
+    public string Libelle
+    {
+        get { return _libelle; }
+        set
+        {
+            if (_libelle != value)
+            {
+                _libelle = value;
+                OnPropertyChanged(nameof(Libelle));
+            }
+        }
+    }
     
     public MainWindowViewModel()
     {
-        Items = new ObservableCollection<Item>(GenerateMockPeopleTable());
-    }
-
-    private IEnumerable<Item> GenerateMockPeopleTable()
-    {
-        var defaultItems = new List<Item>()
+        // Initialize the collection of items
+        Items = new ObservableCollection<Item>
         {
-            new Item() { Grafcet = "G1", Type = "Type1", Libelle = "Libelle1" },
-            new Item() { Grafcet = "G2", Type = "Type2", Libelle = "Libelle2" },
-            new Item() { Grafcet = "G3", Type = "Type3", Libelle = "Libelle3" }
+            new Item { Grafcet = "Grafcet 1", Type = "Type 1", Libelle = "Libellé 1" },
+            new Item { Grafcet = "Grafcet 2", Type = "Type 2", Libelle = "Libellé 2" },
+            new Item { Grafcet = "Grafcet 3", Type = "Type 3", Libelle = "Libellé 3" },
+            new Item { Grafcet = "Grafcet 4", Type = "Type 4", Libelle = "Libellé 4" }
         };
+
+        // Log the number of items
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .CreateLogger();
         
-        return defaultItems;
+        Log.Error("There are {Count} items in the collection", Items.Count);
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    protected virtual void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+    public ObservableCollection<Item> Items { get; }
+    
+    public ObservableCollection<Item> SelectedItem { get; set; }
 
     public void AddButtonClicked()
     {
         var addItemWindow = new AddItemWindow();
         addItemWindow.Show();
+    }
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
