@@ -47,13 +47,10 @@
                 <Grid Margin="30, 20" Grid.Row="0" ColumnDefinitions="2*,*,4*">
                     <TextBlock Grid.Column="0" Text="Grafcet" Background="Aquamarine"/>
                     <TextBlock Grid.Column="1" Text="Type" Background="Firebrick"/>
-                    <TextBlock Grid.Column="2" Text="Libellé" Background="DarkViolet"/>
+                    <TextBlock Grid.Column="2" Text="Libellée" Background="DarkViolet"/>
                 </Grid>
-                <DataGrid Grid.Row="1" 
-                          x:Name="DataGridItems"
-                          AutoGenerateColumns="False" 
-                          Items="{Binding Items}"
-                          SelectedItems="{Binding SelectedItem}">
+                <!-- Fais crash
+                <DataGrid Grid.Row="1">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Grafcet" Binding="{Binding Grafcet}" />
                         <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
@@ -67,7 +64,7 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                     
-                </DataGrid>
+                </DataGrid>-->
             </Grid>
         </Grid>
         
