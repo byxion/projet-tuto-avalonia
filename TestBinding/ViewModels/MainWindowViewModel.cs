@@ -33,9 +33,9 @@ public class MainWindowViewModel : INotifyPropertyChanged
     {
         var defaultItems = new List<Item>()
         {
-            new Item() { Grafcet = "G1", Type = "Type1", Libelle = "Libelle1" },
-            new Item() { Grafcet = "G2", Type = "Type2", Libelle = "Libelle2" },
-            new Item() { Grafcet = "G3", Type = "Type3", Libelle = "Libelle3" }
+            new Item("G1", "Type1", "Libelle1"),
+            new Item("G2", "Type2", "Libelle2"),
+            new Item("G3", "Type3", "Libelle3")
         };
         
         return defaultItems;

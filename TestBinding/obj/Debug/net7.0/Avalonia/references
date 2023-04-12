@@ -40,6 +40,10 @@
 /usr/local/share/dotnet/packs/Microsoft.NETCore.App.Ref/7.0.4/ref/net7.0/Microsoft.Win32.Registry.dll
 /usr/local/share/dotnet/packs/Microsoft.NETCore.App.Ref/7.0.4/ref/net7.0/mscorlib.dll
 /usr/local/share/dotnet/packs/Microsoft.NETCore.App.Ref/7.0.4/ref/net7.0/netstandard.dll
+/Users/mateog./.nuget/packages/np.avalonia.visuals/1.0.38/lib/net6.0/NP.Avalonia.Visuals.dll
+/Users/mateog./.nuget/packages/np.concepts.behaviors/1.0.13/lib/net6.0/NP.Concepts.Behaviors.dll
+/Users/mateog./.nuget/packages/np.utilities/1.0.21/lib/net6.0/NP.Utilities.dll
+/Users/mateog./.nuget/packages/np.viewmodelinterfaces/1.0.4/lib/net6.0/NP.ViewModelInterfaces.dll
 /Users/mateog./.nuget/packages/reactiveui/13.2.10/lib/net5.0/ReactiveUI.dll
 /Users/mateog./.nuget/packages/serilog/3.0.0-dev-01958/lib/net7.0/Serilog.dll
 /Users/mateog./.nuget/packages/serilog.sinks.console/4.1.1-dev-00910/lib/net5.0/Serilog.Sinks.Console.dll

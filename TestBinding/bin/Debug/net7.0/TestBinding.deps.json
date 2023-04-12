@@ -12,6 +12,7 @@
           "Avalonia.Desktop": "0.10.18",
           "Avalonia.Diagnostics": "0.10.18",
           "Avalonia.ReactiveUI": "0.10.18",
+          "NP.Avalonia.Visuals": "1.0.38",
           "Serilog": "3.0.0-dev-01958",
           "Serilog.Sinks.Console": "4.1.1-dev-00910",
           "XamlNameReferenceGenerator": "1.6.1"
@@ -611,6 +612,49 @@
           }
         }
       },
+      "NP.Avalonia.Visuals/1.0.38": {
+        "dependencies": {
+          "Avalonia": "0.10.18",
+          "Avalonia.Desktop": "0.10.18",
+          "Avalonia.Diagnostics": "0.10.18",
+          "NP.Concepts.Behaviors": "1.0.13",
+          "NP.ViewModelInterfaces": "1.0.4"
+        },
+        "runtime": {
+          "lib/net6.0/NP.Avalonia.Visuals.dll": {
+            "assemblyVersion": "1.0.38.0",
+            "fileVersion": "1.0.38.0"
+          }
+        }
+      },
+      "NP.Concepts.Behaviors/1.0.13": {
+        "dependencies": {
+          "NP.Utilities": "1.0.21",
+          "System.Reactive": "5.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/NP.Concepts.Behaviors.dll": {
+            "assemblyVersion": "1.0.13.0",
+            "fileVersion": "1.0.13.0"
+          }
+        }
+      },
+      "NP.Utilities/1.0.21": {
+        "runtime": {
+          "lib/net6.0/NP.Utilities.dll": {
+            "assemblyVersion": "1.0.21.0",
+            "fileVersion": "1.0.21.0"
+          }
+        }
+      },
+      "NP.ViewModelInterfaces/1.0.4": {
+        "runtime": {
+          "lib/net6.0/NP.ViewModelInterfaces.dll": {
+            "assemblyVersion": "1.0.4.0",
+            "fileVersion": "1.0.4.0"
+          }
+        }
+      },
       "ReactiveUI/13.2.10": {
         "dependencies": {
           "DynamicData": "7.1.1",
@@ -1183,6 +1227,34 @@
       "sha512": "sha512-LuI1oG+24TUj1ZRQQjM5Ew73BKnZE5NZ/7eAdh1o8ST5dPhUnJvIkiIn2re3MwnkRy6ELRnvEbBxHP8uALKhJw==",
       "path": "microsoft.win32.systemevents/4.5.0",
       "hashPath": "microsoft.win32.systemevents.4.5.0.nupkg.sha512"
+    },
+    "NP.Avalonia.Visuals/1.0.38": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Y4xOYN1a+itBVnD9l3RyRv2pKOHav6dwmmaPyHmUKK4P+IZoC3qp2YQBB+umqj9KedqXpHQh6ElQGacilZuKqA==",
+      "path": "np.avalonia.visuals/1.0.38",
+      "hashPath": "np.avalonia.visuals.1.0.38.nupkg.sha512"
+    },
+    "NP.Concepts.Behaviors/1.0.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-P9sxE38rjk7B4h2VQCQG/XCOkMcmcIKpTg6OUfNOk1VxI+AD+iuEx8QO2mxsLzofla++OcUg5axub4TNd+XVew==",
+      "path": "np.concepts.behaviors/1.0.13",
+      "hashPath": "np.concepts.behaviors.1.0.13.nupkg.sha512"
+    },
+    "NP.Utilities/1.0.21": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eRocLubMLwRejb5aYKGvPzCuCbjaKKp2Go1CHo7Y/063V6hlW2p0GYuKtym2vuPlwLcOwoyM465Io2WBnRsKPQ==",
+      "path": "np.utilities/1.0.21",
+      "hashPath": "np.utilities.1.0.21.nupkg.sha512"
+    },
+    "NP.ViewModelInterfaces/1.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vBSG1gxqVAWAM83KtrQJfSyB0dGNrP8xc5n2jQY1hQe5RG/qBgoZHTEW7iCCMFDGiTUzTywC/bcnm00TpCYVNQ==",
+      "path": "np.viewmodelinterfaces/1.0.4",
+      "hashPath": "np.viewmodelinterfaces.1.0.4.nupkg.sha512"
     },
     "ReactiveUI/13.2.10": {
       "type": "package",

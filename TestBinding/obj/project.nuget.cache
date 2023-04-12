@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "eoGlUJd87YhfiELwxevjvyUEUra/U06cM/t8uleLD0iES3M9xCtYtNqEFVEZtfE3GNpoOOxCny1IwMz1GkLeog==",
+  "dgSpecHash": "mk8EJV4eZV0boHNjIboP0Inj03bwaYhcz1PSDE3IUU6uAEwMM9jwOHnvukWn1983yaiHV4fpGmXDMbPDZYV6Ow==",
   "success": true,
   "projectFilePath": "/Users/mateog./Desktop/Cobetix/Avalonia/projet_tuto/MyApp/TestBinding/TestBinding.csproj",
   "expectedPackageFiles": [
@@ -32,6 +32,10 @@
     "/Users/mateog./.nuget/packages/microsoft.netcore.platforms/2.1.2/microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "/Users/mateog./.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "/Users/mateog./.nuget/packages/microsoft.win32.systemevents/4.5.0/microsoft.win32.systemevents.4.5.0.nupkg.sha512",
+    "/Users/mateog./.nuget/packages/np.avalonia.visuals/1.0.38/np.avalonia.visuals.1.0.38.nupkg.sha512",
+    "/Users/mateog./.nuget/packages/np.concepts.behaviors/1.0.13/np.concepts.behaviors.1.0.13.nupkg.sha512",
+    "/Users/mateog./.nuget/packages/np.utilities/1.0.21/np.utilities.1.0.21.nupkg.sha512",
+    "/Users/mateog./.nuget/packages/np.viewmodelinterfaces/1.0.4/np.viewmodelinterfaces.1.0.4.nupkg.sha512",
     "/Users/mateog./.nuget/packages/reactiveui/13.2.10/reactiveui.13.2.10.nupkg.sha512",
     "/Users/mateog./.nuget/packages/serilog/3.0.0-dev-01958/serilog.3.0.0-dev-01958.nupkg.sha512",
     "/Users/mateog./.nuget/packages/serilog.sinks.console/4.1.1-dev-00910/serilog.sinks.console.4.1.1-dev-00910.nupkg.sha512",

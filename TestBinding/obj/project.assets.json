@@ -772,6 +772,53 @@
           }
         }
       },
+      "NP.Avalonia.Visuals/1.0.38": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "0.10.18",
+          "Avalonia.Desktop": "0.10.18",
+          "Avalonia.Diagnostics": "0.10.18",
+          "NP.Concepts.Behaviors": "1.0.13",
+          "NP.ViewModelInterfaces": "1.0.4"
+        },
+        "compile": {
+          "lib/net6.0/NP.Avalonia.Visuals.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/NP.Avalonia.Visuals.dll": {}
+        }
+      },
+      "NP.Concepts.Behaviors/1.0.13": {
+        "type": "package",
+        "dependencies": {
+          "NP.Utilities": "1.0.21",
+          "System.Reactive": "5.0.0"
+        },
+        "compile": {
+          "lib/net6.0/NP.Concepts.Behaviors.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/NP.Concepts.Behaviors.dll": {}
+        }
+      },
+      "NP.Utilities/1.0.21": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/NP.Utilities.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/NP.Utilities.dll": {}
+        }
+      },
+      "NP.ViewModelInterfaces/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/NP.ViewModelInterfaces.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/NP.ViewModelInterfaces.dll": {}
+        }
+      },
       "ReactiveUI/13.2.10": {
         "type": "package",
         "dependencies": {
@@ -2304,6 +2351,54 @@
         "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "NP.Avalonia.Visuals/1.0.38": {
+      "sha512": "Y4xOYN1a+itBVnD9l3RyRv2pKOHav6dwmmaPyHmUKK4P+IZoC3qp2YQBB+umqj9KedqXpHQh6ElQGacilZuKqA==",
+      "type": "package",
+      "path": "np.avalonia.visuals/1.0.38",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/NP.Avalonia.Visuals.dll",
+        "np.avalonia.visuals.1.0.38.nupkg.sha512",
+        "np.avalonia.visuals.nuspec"
+      ]
+    },
+    "NP.Concepts.Behaviors/1.0.13": {
+      "sha512": "P9sxE38rjk7B4h2VQCQG/XCOkMcmcIKpTg6OUfNOk1VxI+AD+iuEx8QO2mxsLzofla++OcUg5axub4TNd+XVew==",
+      "type": "package",
+      "path": "np.concepts.behaviors/1.0.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/NP.Concepts.Behaviors.dll",
+        "np.concepts.behaviors.1.0.13.nupkg.sha512",
+        "np.concepts.behaviors.nuspec"
+      ]
+    },
+    "NP.Utilities/1.0.21": {
+      "sha512": "eRocLubMLwRejb5aYKGvPzCuCbjaKKp2Go1CHo7Y/063V6hlW2p0GYuKtym2vuPlwLcOwoyM465Io2WBnRsKPQ==",
+      "type": "package",
+      "path": "np.utilities/1.0.21",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/NP.Utilities.dll",
+        "np.utilities.1.0.21.nupkg.sha512",
+        "np.utilities.nuspec"
+      ]
+    },
+    "NP.ViewModelInterfaces/1.0.4": {
+      "sha512": "vBSG1gxqVAWAM83KtrQJfSyB0dGNrP8xc5n2jQY1hQe5RG/qBgoZHTEW7iCCMFDGiTUzTywC/bcnm00TpCYVNQ==",
+      "type": "package",
+      "path": "np.viewmodelinterfaces/1.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/NP.ViewModelInterfaces.dll",
+        "np.viewmodelinterfaces.1.0.4.nupkg.sha512",
+        "np.viewmodelinterfaces.nuspec"
       ]
     },
     "ReactiveUI/13.2.10": {
@@ -4689,6 +4784,7 @@
       "Avalonia.Desktop >= 0.10.18",
       "Avalonia.Diagnostics >= 0.10.18",
       "Avalonia.ReactiveUI >= 0.10.18",
+      "NP.Avalonia.Visuals >= 1.0.38",
       "Serilog >= 3.0.0-dev-01958",
       "Serilog.Sinks.Console >= 4.1.1-dev-00910",
       "XamlNameReferenceGenerator >= 1.6.1"
@@ -4746,6 +4842,10 @@
           "Avalonia.ReactiveUI": {
             "target": "Package",
             "version": "[0.10.18, )"
+          },
+          "NP.Avalonia.Visuals": {
+            "target": "Package",
+            "version": "[1.0.38, )"
           },
           "Serilog": {
             "target": "Package",

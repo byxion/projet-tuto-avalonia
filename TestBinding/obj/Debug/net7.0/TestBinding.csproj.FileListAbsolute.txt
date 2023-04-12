@@ -268,3 +268,7 @@
 /Users/mateog./Desktop/Cobetix/Avalonia/projet_tuto/MyApp/TestBinding/obj/Debug/net7.0/TestBinding.pdb
 /Users/mateog./Desktop/Cobetix/Avalonia/projet_tuto/MyApp/TestBinding/obj/Debug/net7.0/TestBinding.genruntimeconfig.cache
 /Users/mateog./Desktop/Cobetix/Avalonia/projet_tuto/MyApp/TestBinding/obj/Debug/net7.0/ref/TestBinding.dll
+/Users/mateog./Desktop/Cobetix/Avalonia/projet_tuto/MyApp/TestBinding/bin/Debug/net7.0/NP.Avalonia.Visuals.dll
+/Users/mateog./Desktop/Cobetix/Avalonia/projet_tuto/MyApp/TestBinding/bin/Debug/net7.0/NP.Concepts.Behaviors.dll
+/Users/mateog./Desktop/Cobetix/Avalonia/projet_tuto/MyApp/TestBinding/bin/Debug/net7.0/NP.Utilities.dll
+/Users/mateog./Desktop/Cobetix/Avalonia/projet_tuto/MyApp/TestBinding/bin/Debug/net7.0/NP.ViewModelInterfaces.dll

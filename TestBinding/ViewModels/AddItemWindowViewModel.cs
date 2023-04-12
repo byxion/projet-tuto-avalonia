@@ -56,7 +56,7 @@ public class AddItemWindowViewModel : INotifyPropertyChanged
     
     public void AddItem()
     {
-        var item = new Item() { Grafcet = Grafcet, Type = Type, Libelle = Libelle };
+        var item = new Item(Grafcet, Type, Libelle);
         //Items.Add(item);
     }
 }

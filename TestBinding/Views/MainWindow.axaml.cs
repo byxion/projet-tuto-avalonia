@@ -8,9 +8,21 @@ namespace TestBinding.Views;
 
 public class Item
 {
-    public string Grafcet { get; set; }
-    public string Type { get; set; }
-    public string Libelle { get; set; }
+    public string? Grafcet { get; }
+
+    public string? Type { get; }
+
+    public string? Libelle { get; }
+    
+
+
+    public Item(string? grafcet, string? type, 
+        string? libelle)
+    {
+        Grafcet = grafcet;
+        Type = type;
+        Libelle = libelle;
+    }
 }
 public partial class MainWindow : Window
 {
