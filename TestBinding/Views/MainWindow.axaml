@@ -43,14 +43,7 @@
         
         <!-- Diagramme -->
         <Grid Grid.Row="1">
-            <Grid RowDefinitions="Auto,*">
-                <Grid Margin="30, 20" Grid.Row="0" ColumnDefinitions="2*,*,4*">
-                    <TextBlock Grid.Column="0" Text="Grafcet" Background="Aquamarine"/>
-                    <TextBlock Grid.Column="1" Text="Type" Background="Firebrick"/>
-                    <TextBlock Grid.Column="2" Text="Libellée" Background="DarkViolet"/>
-                </Grid>
-                <!-- Fais crash
-                <DataGrid Grid.Row="1">
+            <DataGrid Margin="20,10" Items="{Binding Items}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Grafcet" Binding="{Binding Grafcet}" />
                         <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
@@ -63,9 +56,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
-                    
-                </DataGrid>-->
-            </Grid>
+                </DataGrid>
         </Grid>
         
         <!-- Footer -->
