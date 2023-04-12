@@ -1,0 +1,79 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TestBinding.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Width="800" Height="450"
+        x:Class="TestBinding.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="TestBinding">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Window.Styles>
+
+        <Style Selector="Button.ActionButton">
+            <Setter Property="Background" Value="#E5E5E5"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="BorderBrush" Value="#C0C0C0"></Setter>
+            <Setter Property="Padding" Value="8"></Setter>
+            <Setter Property="Margin" Value="8"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        </Style>
+    </Window.Styles>
+    
+    <Grid RowDefinitions="Auto, *, Auto">
+        <!-- Header -->
+        <Grid Grid.Row="0" Background="#E5E5E5" Height="40" ColumnDefinitions="Auto, Auto, *, Auto, Auto">
+            <Rectangle Grid.Column="0" Fill="{DynamicResource RedBrush}" Width="40"></Rectangle>
+            <Rectangle Grid.Column="1" Fill="{DynamicResource BlueBrush}" Width="40"></Rectangle>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label Content="{Binding Title}"/>
+            </StackPanel>
+            <Rectangle Grid.Column="3" Fill="{DynamicResource RoseBrush}" Width="40"></Rectangle>
+            <Rectangle Grid.Column="4" Fill="{DynamicResource OrangeBrush}" Width="40"></Rectangle>
+        </Grid>
+        
+        <!-- Diagramme -->
+        <Grid Grid.Row="1">
+            <Grid RowDefinitions="Auto,*">
+                <Grid Margin="30, 20" Grid.Row="0" ColumnDefinitions="2*,*,4*">
+                    <TextBlock Grid.Column="0" Text="Grafcet" Background="Aquamarine"/>
+                    <TextBlock Grid.Column="1" Text="Type" Background="Firebrick"/>
+                    <TextBlock Grid.Column="2" Text="Libellé" Background="DarkViolet"/>
+                </Grid>
+                <DataGrid Grid.Row="1" 
+                          x:Name="DataGridItems"
+                          AutoGenerateColumns="False" 
+                          Items="{Binding Items}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Grafcet" Binding="{Binding Items}" />
+                        <DataGridTextColumn Header="Type" Binding="{Binding Items}" />
+                        <DataGridTextColumn Header="Libellé" Binding="{Binding Items}" />
+                        <DataGridTemplateColumn Header="">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="X" Click="DeleteRow" Background="Transparent" Foreground="White"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                    
+                </DataGrid>
+            </Grid>
+        </Grid>
+        
+        <!-- Footer -->
+        <Grid Grid.Row="2" ColumnDefinitions="Auto, *, Auto" Margin="8">
+            <Button Command="{Binding AddButtonClicked}" Classes="ActionButton" Grid.Column="0">Ajouter</Button>
+            <Button Classes="ActionButton" Grid.Column="2">Modifier</Button>
+        </Grid>
+    </Grid>
+</Window>
