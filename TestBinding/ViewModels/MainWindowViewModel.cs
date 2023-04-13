@@ -94,7 +94,6 @@ public class MainWindowViewModel : INotifyPropertyChanged
         addItemWindow.DataContext = addItemViewModel;
         addItemWindow.Show();
     }
-
     public event PropertyChangedEventHandler PropertyChanged;
 
     protected virtual void OnPropertyChanged(string propertyName)

@@ -23,12 +23,23 @@ public partial class MainWindow : Window
 #endif
         DataContext = new MainWindowViewModel();
     }
-
     
-    private void DeleteRow(object sender, RoutedEventArgs e)
+    public bool IsItemSelected { get; set; }
+    private void DeleteButton_Click(object sender, RoutedEventArgs e)
     {
-        // Cast DataContext back to MainWindowViewModel to access Items property
-        //var viewModel = DataContext as MainWindowViewModel;
-        //viewModel.Items.Remove(SelectedItem);
+        // Récupérer l'élément de la ligne sélectionnée
+        var selectedItem = MyDataGrid.SelectedItem as Item;
+
+        // Vérifier que l'élément est non nul
+        if (selectedItem != null)
+        {
+            // Mettre à jour la propriété IsItemSelected
+            IsItemSelected = true;
+
+            // Supprimer l'élément de la liste Items
+            (DataContext as MainWindowViewModel).Items.Remove(selectedItem);
+        }
     }
+
+
 }

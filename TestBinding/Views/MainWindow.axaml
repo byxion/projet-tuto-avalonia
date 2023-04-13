@@ -46,19 +46,20 @@
         
         <!-- Diagramme -->
         <Grid Grid.Row="1">
-            <DataGrid Margin="20,10" Items="{Binding Items}">
-                    <DataGrid.Columns>
+            <DataGrid Margin="20,10" Items="{Binding Items}" x:Name="MyDataGrid">
+                <DataGrid.Columns>
                         <DataGridTextColumn Header="Grafcet" Width="*" IsReadOnly="True" Binding="{Binding Grafcet}" />
                         <DataGridTextColumn Header="Type" IsReadOnly="True" Binding="{Binding Type}" />
                         <DataGridTextColumn Header="Libellé" Width="2*" IsReadOnly="True" Binding="{Binding Libelle}" />
                         <DataGridTemplateColumn Header="">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="X" Click="DeleteRow" Classes="Delete" Background="Transparent" BorderThickness="0" Foreground="White"/>
+                                    <Button Content="X" Background="Transparent" BorderThickness="0" Foreground="White" 
+                                            Click="DeleteButton_Click"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                    </DataGrid.Columns>
+                </DataGrid.Columns>
             </DataGrid>
         </Grid>
         
