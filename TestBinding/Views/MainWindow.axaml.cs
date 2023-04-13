@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using TestBinding.ViewModels;
@@ -17,6 +18,9 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        this.AttachDevTools();
+#if DEBUG
+#endif
         DataContext = new MainWindowViewModel();
     }
 

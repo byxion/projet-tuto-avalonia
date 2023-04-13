@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Serilog;
@@ -90,8 +90,11 @@ public class MainWindowViewModel : INotifyPropertyChanged
     public void AddButtonClicked()
     {
         var addItemWindow = new AddItemWindow();
+        var addItemViewModel = new AddItemWindowViewModel(Items);
+        addItemWindow.DataContext = addItemViewModel;
         addItemWindow.Show();
     }
+
     public event PropertyChangedEventHandler PropertyChanged;
 
     protected virtual void OnPropertyChanged(string propertyName)

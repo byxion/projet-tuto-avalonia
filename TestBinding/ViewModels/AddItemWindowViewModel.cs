@@ -1,4 +1,8 @@
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Avalonia;
+using Avalonia.Controls;
+using Serilog;
 using TestBinding.Views;
 
 namespace TestBinding.ViewModels;
@@ -11,6 +15,13 @@ public class AddItemWindowViewModel : INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
+    
+    public ObservableCollection<Item> Items { get; set; }
+    public AddItemWindowViewModel(ObservableCollection<Item> items)
+    {
+        Items = items;
+    }
+
     
     private string _grafcet;
     public string Grafcet
@@ -53,10 +64,16 @@ public class AddItemWindowViewModel : INotifyPropertyChanged
             }
         }
     }
-    
     public void AddItem()
     {
-        var item = new Item() { Grafcet = Grafcet, Type = Type, Libelle = Libelle };
-        //Items.Add(item);
+        // Ajoute un item à la liste
+        Items.Add(new Item { Grafcet = Grafcet, Type = Type, Libelle = Libelle });
+    
+        // Reset les champs
+        Grafcet = "";
+        Type = "";
+        Libelle = "";
     }
+
+
 }

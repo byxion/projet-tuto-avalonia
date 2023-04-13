@@ -4,6 +4,7 @@
     <option name="projectPerEditor">
       <map>
         <entry key="TestBinding/App.axaml" value="TestBinding/TestBinding.csproj" />
+        <entry key="TestBinding/Views/AddItemWindow.axaml" value="TestBinding/TestBinding.csproj" />
         <entry key="TestBinding/Views/MainWindow.axaml" value="TestBinding/TestBinding.csproj" />
       </map>
     </option>

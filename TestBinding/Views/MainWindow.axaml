@@ -17,7 +17,6 @@
     </Design.DataContext>
 
     <Window.Styles>
-
         <Style Selector="Button.ActionButton">
             <Setter Property="Background" Value="#E5E5E5"></Setter>
             <Setter Property="BorderThickness" Value="1"></Setter>
@@ -26,6 +25,10 @@
             <Setter Property="Margin" Value="8"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        </Style>
+        <Style Selector="DataGrid">
+            <Setter Property="RowBackground" Value="MediumVioletRed"></Setter>
+            <Setter Property="AlternatingRowBackground" Value="Violet"></Setter>
         </Style>
     </Window.Styles>
     
@@ -45,18 +48,18 @@
         <Grid Grid.Row="1">
             <DataGrid Margin="20,10" Items="{Binding Items}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Grafcet" Binding="{Binding Grafcet}" />
-                        <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
-                        <DataGridTextColumn Header="Libellé" Binding="{Binding Libelle}" />
+                        <DataGridTextColumn Header="Grafcet" Width="*" IsReadOnly="True" Binding="{Binding Grafcet}" />
+                        <DataGridTextColumn Header="Type" IsReadOnly="True" Binding="{Binding Type}" />
+                        <DataGridTextColumn Header="Libellé" Width="2*" IsReadOnly="True" Binding="{Binding Libelle}" />
                         <DataGridTemplateColumn Header="">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="X" Click="DeleteRow" Background="Transparent" Foreground="White"/>
+                                    <Button Content="X" Click="DeleteRow" Classes="Delete" Background="Transparent" BorderThickness="0" Foreground="White"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
-                </DataGrid>
+            </DataGrid>
         </Grid>
         
         <!-- Footer -->

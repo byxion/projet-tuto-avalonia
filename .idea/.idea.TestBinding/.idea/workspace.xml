@@ -8,7 +8,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e40ec04-fdb9-4e53-946c-ac5aef9c840c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/TestBinding/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TestBinding/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TestBinding/.idea/avalonia.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TestBinding/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TestBinding/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/ViewModels/AddItemWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/ViewModels/AddItemWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/ViewModels/MainWindowViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/Views/AddItemWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/Views/AddItemWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/Views/AddItemWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/Views/AddItemWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/Views/MainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/Views/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/Views/MainWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/bin/Debug/net7.0/TestBinding.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/bin/Debug/net7.0/TestBinding.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/bin/Debug/net7.0/TestBinding.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/bin/Debug/net7.0/TestBinding.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/Avalonia/original.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/Avalonia/original.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/Avalonia/original.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/Avalonia/original.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/Avalonia/resources" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/Avalonia/resources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/TestBinding.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/TestBinding.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/TestBinding.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/TestBinding.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/TestBinding.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/TestBinding.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/ref/TestBinding.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/ref/TestBinding.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/refint/TestBinding.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/obj/Debug/net7.0/refint/TestBinding.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestBinding/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/TestBinding/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +35,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/TestBinding/ViewModels/MainWindowViewModel.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2OKOWqcP3B9zjxbwzdk8s5htb2m" />
   <component name="ProjectViewState">
@@ -34,6 +55,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -74,7 +96,9 @@
       <updated>1681305841239</updated>
       <workItem from="1681305842451" duration="5084000" />
       <workItem from="1681312027757" duration="4000" />
-      <workItem from="1681312484431" duration="1911000" />
+      <workItem from="1681312484431" duration="2006000" />
+      <workItem from="1681370005669" duration="5799000" />
+      <workItem from="1681376622739" duration="3231000" />
     </task>
     <servers />
   </component>
