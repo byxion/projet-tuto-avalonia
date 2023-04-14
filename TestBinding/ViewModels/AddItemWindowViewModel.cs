@@ -1,7 +1,6 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using Avalonia;
-using Avalonia.Controls;
+using System.Linq;
 using Serilog;
 using TestBinding.Views;
 
@@ -16,10 +15,59 @@ public class AddItemWindowViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
     
+    private string _title = "Ajouter un item";
+    public string Title
+    {
+        get => _title;
+        set
+        {
+            if (_title != value)
+            {
+                _title = value;
+                OnPropertyChanged(nameof(Title));
+            }
+        }
+    }
+    private string _textButton = "Ajouter";
+    public string TextButton
+    {
+        get => _textButton;
+        set
+        {
+            if (_textButton != value)
+            {
+                _textButton = value;
+                OnPropertyChanged(nameof(TextButton));
+            }
+        }
+    }
     public ObservableCollection<Item> Items { get; set; }
+    public bool EditMode { get; set; }
+    
+    public int Index { get; set; } = 1;
+    
+    public AddItemWindowViewModel()
+    {
+        Items = new ObservableCollection<Item>();
+    }
     public AddItemWindowViewModel(ObservableCollection<Item> items)
     {
         Items = items;
+        EditMode = false;
+    }
+    public AddItemWindowViewModel(ObservableCollection<Item> items,Item item)
+    {
+        Items = items;
+        Grafcet = item.Grafcet;
+        Type = item.Type;
+        Libelle = item.Libelle;
+        
+        Index = Items.IndexOf(Items.First(x => x.Grafcet == Grafcet));
+        
+        EditMode = true;
+
+        Title = "Modifier un item";
+        TextButton = "Modifier";
     }
 
     
@@ -67,13 +115,24 @@ public class AddItemWindowViewModel : INotifyPropertyChanged
     public void AddItem()
     {
         // Ajoute un item à la liste
-        Items.Add(new Item { Grafcet = Grafcet, Type = Type, Libelle = Libelle });
-    
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .CreateLogger();
+
+        var item = new Item { Grafcet = Grafcet, Type = Type, Libelle = Libelle };
+        
+        if (EditMode)
+        {
+            /* TODO */
+        }
+        else
+        {
+            Items.Add(item);
+        }
+
         // Reset les champs
         Grafcet = "";
         Type = "";
         Libelle = "";
     }
-
-
 }

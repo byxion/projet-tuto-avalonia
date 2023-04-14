@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Avalonia.Interactivity;
 using Serilog;
 using TestBinding.Views;
 
@@ -64,6 +65,14 @@ public class MainWindowViewModel : INotifyPropertyChanged
         }
     }
     
+    private object _selectedItem;
+    public object SelectedItem
+    {
+        get { return _selectedItem; }
+        set { if(_selectedItem != value) { _selectedItem = value; OnPropertyChanged(nameof(SelectedItem)); } }
+    }
+
+    
     public MainWindowViewModel()
     {
         // Initialize the collection of items
@@ -74,18 +83,9 @@ public class MainWindowViewModel : INotifyPropertyChanged
             new Item { Grafcet = "Grafcet 3", Type = "Type 1", Libelle = "Libellé 2" },
             new Item { Grafcet = "Grafcet 4", Type = "Type 4", Libelle = "Libellé 3" }
         };
-
-        // Log the number of items
-        Log.Logger = new LoggerConfiguration()
-            .WriteTo.Console()
-            .CreateLogger();
-        
-        Log.Error("There are {Count} items in the collection", Items.Count);
     }
 
     public ObservableCollection<Item> Items { get; }
-    
-    public ObservableCollection<Item> SelectedItem { get; set; }
 
     public void AddButtonClicked()
     {
@@ -93,6 +93,32 @@ public class MainWindowViewModel : INotifyPropertyChanged
         var addItemViewModel = new AddItemWindowViewModel(Items);
         addItemWindow.DataContext = addItemViewModel;
         addItemWindow.Show();
+    }
+    
+    private void DeleteButtonClick()
+    {
+        // Récupérer l'élément de la ligne sélectionnée
+        var selectedItem = SelectedItem as Item;
+
+        // Vérifier que l'élément est non nul
+        if (selectedItem != null)
+        {
+            // Supprimer l'élément de la liste Items
+            Items.Remove(selectedItem);
+        }
+    }
+
+    public void EditButtonClicked()
+    {
+
+        var selectedItem = SelectedItem as Item;
+        if (selectedItem != null)
+        {
+            var addItemWindow = new AddItemWindow();
+            var addItemViewModel = new AddItemWindowViewModel(Items, selectedItem);
+            addItemWindow.DataContext = addItemViewModel;
+            addItemWindow.Show();
+        }
     }
     public event PropertyChangedEventHandler PropertyChanged;
 

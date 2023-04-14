@@ -7,7 +7,7 @@
         Width="500" Height="250"
         x:Class="TestBinding.Views.AddItemWindow"
         x:DataType="vm:AddItemWindowViewModel"
-        Title="Ajouter un item">
+        Title="{Binding Title}">
         
         <Design.DataContext>
                 <!-- This only sets the DataContext for the previewer in an IDE,
@@ -34,7 +34,7 @@
                         <TextBox Grid.Row="0" Text="{Binding Grafcet}" Watermark="Grafcet"/>
                         <TextBox Grid.Row="1" Text="{Binding Type}" Watermark="Type"/>
                         <TextBox Grid.Row="2" Text="{Binding Libelle}" Watermark="Libellé"/>
-                        <Button Grid.Row="3" Command="{Binding AddItem}">Ajouter</Button>
+                        <Button Grid.Row="3" Command="{Binding AddItem}" Content="{Binding TextButton}" />
                 </Grid>
         </Border>
 </Window>

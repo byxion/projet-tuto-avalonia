@@ -18,28 +18,18 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        this.AttachDevTools();
 #if DEBUG
+        this.AttachDevTools();
 #endif
         DataContext = new MainWindowViewModel();
     }
     
-    public bool IsItemSelected { get; set; }
-    private void DeleteButton_Click(object sender, RoutedEventArgs e)
+    public void DeleteButton(object? sender, RoutedEventArgs e)
     {
-        // Récupérer l'élément de la ligne sélectionnée
-        var selectedItem = MyDataGrid.SelectedItem as Item;
-
-        // Vérifier que l'élément est non nul
-        if (selectedItem != null)
+        var item = (sender as Button)?.DataContext as Item;
+        if (item != null)
         {
-            // Mettre à jour la propriété IsItemSelected
-            IsItemSelected = true;
-
-            // Supprimer l'élément de la liste Items
-            (DataContext as MainWindowViewModel).Items.Remove(selectedItem);
+            (DataContext as MainWindowViewModel)?.Items.Remove(item);
         }
     }
-
-
 }
