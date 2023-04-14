@@ -16,6 +16,10 @@
         </Design.DataContext>
         
         <Window.Styles>
+                <Style Selector="Border.Container">
+                        <Setter Property="Background" Value="White"></Setter>
+                        <Setter Property="Padding" Value="10"></Setter>
+                </Style>
                 <Style Selector="TextBox">
                         <Setter Property="Margin" Value="10"></Setter>
                 </Style>
@@ -29,7 +33,7 @@
                         <Setter Property="VerticalAlignment" Value="Center"></Setter>
                 </Style>
         </Window.Styles>
-        <Border Background="White" Padding="20">
+        <Border Classes="Container">
                 <Grid RowDefinitions="Auto,Auto,Auto,Auto">
                         <TextBox Grid.Row="0" Text="{Binding Grafcet}" Watermark="Grafcet"/>
                         <TextBox Grid.Row="1" Text="{Binding Type}" Watermark="Type"/>

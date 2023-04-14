@@ -7,7 +7,6 @@
         Width="800" Height="450"
         x:Class="TestBinding.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
         Title="TestBinding">
 
     <Design.DataContext>
@@ -47,7 +46,8 @@
         <!-- Diagramme -->
         <Grid Grid.Row="1">
             <DataGrid Margin="20,10" Items="{Binding Items}" x:Name="MyDataGrid"
-                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                      x:CompileBindings="False">
                 <DataGrid.Columns>
                         <DataGridTextColumn Header="Grafcet" Width="*" IsReadOnly="True" Binding="{Binding Grafcet}" />
                         <DataGridTextColumn Header="Type" IsReadOnly="True" Binding="{Binding Type}" />
@@ -55,8 +55,11 @@
                         <DataGridTemplateColumn Header="">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="X" Background="Transparent" BorderThickness="0" Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}, Path=Background}"
-                                            Click="DeleteButton" />
+                                    <Button Content="X"
+                                            Background="Transparent"
+                                            BorderThickness="0"
+                                            Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}, Path=Background}"
+                                            Click="DeleteButton"/> 
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

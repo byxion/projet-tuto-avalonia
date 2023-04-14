@@ -1,33 +1,30 @@
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using Avalonia;
-using Avalonia.Controls;
 using ReactiveUI;
-using Serilog;
-using TestBinding.Views;
+using TestBinding.Models;
 
 namespace TestBinding.ViewModels;
 
 public class AddItemWindowViewModel : ViewModelBase
 {
 
-    private string _title = "Ajouter un item";
+    private string _title = "Ajouter un item"; 
     public string Title
     {
         get => _title;
         set => this.RaiseAndSetIfChanged(ref _title, value);
     }
-    private string _textButton = "Ajouter";
+    
+    private string _textButton = "Ajouter"; 
     public string TextButton
     {
         get => _textButton;
         set => this.RaiseAndSetIfChanged(ref _textButton, value);
-    }
-    public ObservableCollection<Item> Items { get; set; }
-    public bool EditMode { get; set; }
+    } 
     
-    public int Index { get; set; } = 1;
+    private ObservableCollection<Item> Items { get; set; }
+    private bool EditMode { get; set; }
+    private int Index { get; set; } = -1;
     
     public AddItemWindowViewModel()
     {
@@ -54,44 +51,48 @@ public class AddItemWindowViewModel : ViewModelBase
         TextButton = "Modifier";
     }
 
-    
-    private string _grafcet;
-    public string Grafcet
+    private string? _grafcet;
+    public string? Grafcet
     {
         get => _grafcet;
         set => this.RaiseAndSetIfChanged(ref _grafcet, value);
     }
     
-    private string _type;
-    public string Type
+    private string? _type;
+    public string? Type
     {
         get => _type;
         set => this.RaiseAndSetIfChanged(ref _type, value);
     }
     
-    private string _libelle;
-    public string Libelle
+    private string? _libelle;
+    public string? Libelle
     {
         get => _libelle;
         set => this.RaiseAndSetIfChanged(ref _libelle, value);
     }
+    
     public void AddItem()
     {
-        // Ajoute un item à la liste
         var item = new Item { Grafcet = Grafcet, Type = Type, Libelle = Libelle };
-        
+
         if (EditMode)
         {
-            Items[Index] = item;
+            // Remplace l'item à l'index
+            Items[Index] = item; 
+            
+            // Fermer la fenêtre AddItemWindow
+            
         }
         else
         {
+            // Ajoute l'item à la fin de la liste
             Items.Add(item);
+            
+            // Reset les champs
+            Grafcet = "";
+            Type = "";
+            Libelle = "";
         }
-
-        // Reset les champs
-        Grafcet = "";
-        Type = "";
-        Libelle = "";
     }
 }

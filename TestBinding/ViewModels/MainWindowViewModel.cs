@@ -1,10 +1,7 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using Avalonia.Interactivity;
 using ReactiveUI;
-using Serilog;
 using TestBinding.Views;
+using TestBinding.Models;
 
 namespace TestBinding.ViewModels;
 
@@ -38,18 +35,15 @@ public class MainWindowViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _libelle, value);
     }
     
-    private object _selectedItem;
-    public object SelectedItem
+    private object? _selectedItem;
+    public object? SelectedItem
     {
         get => _selectedItem;
         set => this.RaiseAndSetIfChanged(ref _selectedItem, value);
-        
     }
-
     
     public MainWindowViewModel()
     {
-        // Initialize the collection of items
         Items = new ObservableCollection<Item>
         {
             new Item { Grafcet = "Grafcet 1", Type = "Type 2", Libelle = "Libellé 4" },
@@ -63,6 +57,7 @@ public class MainWindowViewModel : ViewModelBase
 
     public void AddButtonClicked()
     {
+        // Créer une nouvelle fenêtre AddItem et donne la liste d'items
         var addItemWindow = new AddItemWindow();
         var addItemViewModel = new AddItemWindowViewModel(Items);
         addItemWindow.DataContext = addItemViewModel;
@@ -74,20 +69,18 @@ public class MainWindowViewModel : ViewModelBase
         // Récupérer l'élément de la ligne sélectionnée
         var selectedItem = SelectedItem as Item;
         
-        // Vérifier que l'élément est non nul
         if (selectedItem != null)
         {
-            // Supprimer l'élément de la liste Items
             Items.Remove(selectedItem);
         }
     }
 
     public void EditButtonClicked()
     {
-
         var selectedItem = SelectedItem as Item;
         if (selectedItem != null)
         {
+            // Créer une nouvelle fenêtre AddItem et donne la liste d'items et l'élément sélectionné
             var addItemWindow = new AddItemWindow();
             var addItemViewModel = new AddItemWindowViewModel(Items, selectedItem);
             addItemWindow.DataContext = addItemViewModel;
