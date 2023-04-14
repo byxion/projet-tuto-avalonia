@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using ReactiveUI;
 using TestBinding.Views;
 using TestBinding.Models;
@@ -42,6 +43,10 @@ public class MainWindowViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _selectedItem, value);
     }
     
+    public ObservableCollection<Item> Items { get; }
+    public ICommand AddButtonClicked { get; }
+    public ICommand DeleteButtonClick { get; }
+    public ICommand EditButtonClicked { get; }
     public MainWindowViewModel()
     {
         Items = new ObservableCollection<Item>
@@ -51,40 +56,39 @@ public class MainWindowViewModel : ViewModelBase
             new Item { Grafcet = "Grafcet 3", Type = "Type 1", Libelle = "Libellé 2" },
             new Item { Grafcet = "Grafcet 4", Type = "Type 4", Libelle = "Libellé 3" }
         };
-    }
-
-    public ObservableCollection<Item> Items { get; }
-
-    public void AddButtonClicked()
-    {
-        // Créer une nouvelle fenêtre AddItem et donne la liste d'items
-        var addItemWindow = new AddItemWindow();
-        var addItemViewModel = new AddItemWindowViewModel(Items);
-        addItemWindow.DataContext = addItemViewModel;
-        addItemWindow.Show();
-    }
-    
-    private void DeleteButtonClick()
-    {
-        // Récupérer l'élément de la ligne sélectionnée
-        var selectedItem = SelectedItem as Item;
         
-        if (selectedItem != null)
+        AddButtonClicked = ReactiveCommand.Create(() =>
         {
-            Items.Remove(selectedItem);
-        }
-    }
-
-    public void EditButtonClicked()
-    {
-        var selectedItem = SelectedItem as Item;
-        if (selectedItem != null)
-        {
-            // Créer une nouvelle fenêtre AddItem et donne la liste d'items et l'élément sélectionné
+            // Créer une nouvelle fenêtre AddItem et donne la liste d'items
             var addItemWindow = new AddItemWindow();
-            var addItemViewModel = new AddItemWindowViewModel(Items, selectedItem);
+            var addItemViewModel = new AddItemWindowViewModel(Items);
             addItemWindow.DataContext = addItemViewModel;
             addItemWindow.Show();
-        }
+        });
+        
+        DeleteButtonClick = ReactiveCommand.Create(() =>
+        {
+            // Récupérer l'élément de la ligne sélectionnée
+            var selectedItem = SelectedItem as Item;
+        
+            if (selectedItem != null)
+            {
+                Items.Remove(selectedItem);
+            }
+        });
+        
+        EditButtonClicked = ReactiveCommand.Create(() =>
+        {
+            var selectedItem = SelectedItem as Item;
+            if (selectedItem != null)
+            {
+                // Créer une nouvelle fenêtre AddItem et donne la liste d'items et l'élément sélectionné
+                var addItemWindow = new AddItemWindow();
+                var addItemViewModel = new AddItemWindowViewModel(Items, selectedItem);
+                addItemWindow.DataContext = addItemViewModel;
+                addItemWindow.Show();
+            }
+        });
+        
     }
 }

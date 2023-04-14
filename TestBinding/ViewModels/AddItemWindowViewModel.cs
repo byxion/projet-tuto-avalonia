@@ -82,7 +82,7 @@ public class AddItemWindowViewModel : ViewModelBase
             Items[Index] = item; 
             
             // Fermer la fenêtre AddItemWindow
-            
+            /* TODO */
         }
         else
         {
