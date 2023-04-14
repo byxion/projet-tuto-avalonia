@@ -1,45 +1,28 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using Avalonia;
+using Avalonia.Controls;
+using ReactiveUI;
 using Serilog;
 using TestBinding.Views;
 
 namespace TestBinding.ViewModels;
 
-public class AddItemWindowViewModel : INotifyPropertyChanged
+public class AddItemWindowViewModel : ViewModelBase
 {
-    public event PropertyChangedEventHandler PropertyChanged;
 
-    protected virtual void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-    
     private string _title = "Ajouter un item";
     public string Title
     {
         get => _title;
-        set
-        {
-            if (_title != value)
-            {
-                _title = value;
-                OnPropertyChanged(nameof(Title));
-            }
-        }
+        set => this.RaiseAndSetIfChanged(ref _title, value);
     }
     private string _textButton = "Ajouter";
     public string TextButton
     {
         get => _textButton;
-        set
-        {
-            if (_textButton != value)
-            {
-                _textButton = value;
-                OnPropertyChanged(nameof(TextButton));
-            }
-        }
+        set => this.RaiseAndSetIfChanged(ref _textButton, value);
     }
     public ObservableCollection<Item> Items { get; set; }
     public bool EditMode { get; set; }
@@ -49,6 +32,7 @@ public class AddItemWindowViewModel : INotifyPropertyChanged
     public AddItemWindowViewModel()
     {
         Items = new ObservableCollection<Item>();
+        EditMode = false;
     }
     public AddItemWindowViewModel(ObservableCollection<Item> items)
     {
@@ -75,55 +59,30 @@ public class AddItemWindowViewModel : INotifyPropertyChanged
     public string Grafcet
     {
         get => _grafcet;
-        set
-        {
-            if (_grafcet != value)
-            {
-                _grafcet = value;
-                OnPropertyChanged(nameof(Grafcet));
-            }
-        }
+        set => this.RaiseAndSetIfChanged(ref _grafcet, value);
     }
     
     private string _type;
     public string Type
     {
         get => _type;
-        set
-        {
-            if (_type != value)
-            {
-                _type = value;
-                OnPropertyChanged(nameof(Type));
-            }
-        }
+        set => this.RaiseAndSetIfChanged(ref _type, value);
     }
     
     private string _libelle;
     public string Libelle
     {
         get => _libelle;
-        set
-        {
-            if (_libelle != value)
-            {
-                _libelle = value;
-                OnPropertyChanged(nameof(Libelle));
-            }
-        }
+        set => this.RaiseAndSetIfChanged(ref _libelle, value);
     }
     public void AddItem()
     {
         // Ajoute un item à la liste
-        Log.Logger = new LoggerConfiguration()
-            .WriteTo.Console()
-            .CreateLogger();
-
         var item = new Item { Grafcet = Grafcet, Type = Type, Libelle = Libelle };
         
         if (EditMode)
         {
-            /* TODO */
+            Items[Index] = item;
         }
         else
         {

@@ -27,8 +27,8 @@
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
         </Style>
         <Style Selector="DataGrid">
-            <Setter Property="RowBackground" Value="MediumVioletRed"></Setter>
-            <Setter Property="AlternatingRowBackground" Value="Violet"></Setter>
+            <Setter Property="RowBackground" Value="DarkGray"></Setter>
+            <Setter Property="AlternatingRowBackground" Value="DimGray"></Setter>
         </Style>
     </Window.Styles>
     
