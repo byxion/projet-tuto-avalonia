@@ -40,7 +40,7 @@ public class AddItemWindowViewModel : ViewModelBase
     {
         Items = items;
         Grafcet = item.Grafcet;
-        Type = item.Type;
+        Export = item.Export;
         Libelle = item.Libelle;
         
         Index = Items.IndexOf(Items.First(x => x.Grafcet == Grafcet));
@@ -58,11 +58,11 @@ public class AddItemWindowViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _grafcet, value);
     }
     
-    private bool? _type;
-    public bool? Type
+    private bool? _export;
+    public bool? Export
     {
-        get => _type;
-        set => this.RaiseAndSetIfChanged(ref _type, value);
+        get => _export;
+        set => this.RaiseAndSetIfChanged(ref _export, value);
     }
     
     private string? _libelle;
@@ -74,7 +74,7 @@ public class AddItemWindowViewModel : ViewModelBase
     
     public void AddItem()
     {
-        var item = new Item { Grafcet = Grafcet, Type = Type, Libelle = Libelle };
+        var item = new Item { Grafcet = Grafcet, Export = Export, Libelle = Libelle };
 
         if (EditMode)
         {
@@ -91,7 +91,7 @@ public class AddItemWindowViewModel : ViewModelBase
             
             // Reset les champs
             Grafcet = "";
-            Type = false;
+            Export = false;
             Libelle = "";
         }
     }

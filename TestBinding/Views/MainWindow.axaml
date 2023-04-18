@@ -85,10 +85,10 @@
                 <DataGrid.Columns>
                         <DataGridTextColumn Header="Grafcet" Width="*" IsReadOnly="True" Binding="{Binding Grafcet}" />
                         
-                        <DataGridTemplateColumn Header="Validation">
+                        <DataGridTemplateColumn Header="Export">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                        <Image Source="../Assets/icon_validate.png" Width="16" Height="16" IsVisible="{Binding Type}"/>
+                                        <Image Source="../Assets/icon_validate.png" Width="16" Height="16" IsVisible="{Binding Export}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

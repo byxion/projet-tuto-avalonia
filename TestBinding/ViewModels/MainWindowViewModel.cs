@@ -22,11 +22,11 @@ public class MainWindowViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _grafcet, value);
     }
     
-    private bool _type = false;
-    public bool Type
+    private bool _export = false;
+    public bool Export
     {
-        get => _type;
-        set => this.RaiseAndSetIfChanged(ref _type, value);
+        get => _export;
+        set => this.RaiseAndSetIfChanged(ref _export, value);
     }
     
     private string _libelle = "Libellé 1";
@@ -53,9 +53,9 @@ public class MainWindowViewModel : ViewModelBase
     {
         Items = new ObservableCollection<Item>
         {
-            new Item { Grafcet = "Grafcet 1", Type = true, Libelle = "Libellé 4" },
-            new Item { Grafcet = "Grafcet 2", Type = true, Libelle = "Libellé 1" },
-            new Item { Grafcet = "Grafcet 3", Type = false, Libelle = "Libellé 2" }
+            new Item { Grafcet = "Grafcet 1", Export = true, Libelle = "Libellé 4" },
+            new Item { Grafcet = "Grafcet 2", Export = true, Libelle = "Libellé 1" },
+            new Item { Grafcet = "Grafcet 3", Export = false, Libelle = "Libellé 2" }
         };
         
         AddButtonClicked = ReactiveCommand.Create(() =>
