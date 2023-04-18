@@ -13,7 +13,7 @@ public class FilterIsVisibleConverter : IValueConverter
         {
             return true;
         }
-        return false;
+        return true;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

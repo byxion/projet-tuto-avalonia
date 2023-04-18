@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Linq;
+using Avalonia.Controls;
 using ReactiveUI;
 using TestBinding.Models;
 
@@ -23,27 +24,35 @@ public class AddItemWindowViewModel : ViewModelBase
     } 
     
     private ObservableCollection<Item> Items { get; set; }
+    private ObservableCollection<Item> ItemsCopy { get; set; }
     private bool EditMode { get; set; }
     private int Index { get; set; } = -1;
+    private int IndexCopy { get; set; } = -1;
+    public Window Window { get; set; }
     
     public AddItemWindowViewModel()
     {
         Items = new ObservableCollection<Item>();
         EditMode = false;
     }
-    public AddItemWindowViewModel(ObservableCollection<Item> items)
+    public AddItemWindowViewModel(ObservableCollection<Item> items, ObservableCollection<Item> itemsCopy, Window window)
     {
         Items = items;
+        ItemsCopy = itemsCopy;
         EditMode = false;
+        Window = window; /* Propre ? */
     }
-    public AddItemWindowViewModel(ObservableCollection<Item> items,Item item)
+    public AddItemWindowViewModel(ObservableCollection<Item> items, ObservableCollection<Item> itemCopy, Item item, Window window)
     {
         Items = items;
+        ItemsCopy = itemCopy;
+        Window = window; /* Propre ? */
         Grafcet = item.Grafcet;
         Export = item.Export;
         Libelle = item.Libelle;
         
         Index = Items.IndexOf(Items.First(x => x.Grafcet == Grafcet));
+        IndexCopy = ItemsCopy.IndexOf(ItemsCopy.First(x => x.Grafcet == Grafcet));
         
         EditMode = true;
 
@@ -79,20 +88,20 @@ public class AddItemWindowViewModel : ViewModelBase
         if (EditMode)
         {
             // Remplace l'item à l'index
-            Items[Index] = item; 
-            
-            // Fermer la fenêtre AddItemWindow
-            /* TODO */
+            Items[Index] = item;
+            ItemsCopy[IndexCopy] = item;
         }
         else
         {
             // Ajoute l'item à la fin de la liste
             Items.Add(item);
+            ItemsCopy.Add(item);
             
             // Reset les champs
             Grafcet = "";
             Export = false;
             Libelle = "";
         }
+        Window.Close();
     }
 }

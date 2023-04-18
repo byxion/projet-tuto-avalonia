@@ -17,21 +17,21 @@ public class MainWindowViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _title, value);
     }
     
-    private string _grafcet = "Grafcet 1";
+    private string _grafcet;
     public string Grafcet
     {
         get => _grafcet;
         set => this.RaiseAndSetIfChanged(ref _grafcet, value);
     }
     
-    private bool _export = false;
+    private bool _export;
     public bool Export
     {
         get => _export;
         set => this.RaiseAndSetIfChanged(ref _export, value);
     }
     
-    private string _libelle = "Libellé 1";
+    private string _libelle;
     public string Libelle
     {
         get => _libelle;
@@ -44,9 +44,7 @@ public class MainWindowViewModel : ViewModelBase
         get => _selectedItem;
         set => this.RaiseAndSetIfChanged(ref _selectedItem, value);
     }
-    
-    public object? HoveredItem => SelectedItem;
-    
+
     public ObservableCollection<Item> Items { get; }
     public ObservableCollection<Item> ItemsCopy { get; set; } = new();
     public ICommand AddButtonClicked { get; }
@@ -65,7 +63,7 @@ public class MainWindowViewModel : ViewModelBase
         {
             // Créer une nouvelle fenêtre AddItem et donne la liste d'items
             var addItemWindow = new AddItemWindow();
-            var addItemViewModel = new AddItemWindowViewModel(Items);
+            var addItemViewModel = new AddItemWindowViewModel(Items, ItemsCopy,addItemWindow);
             addItemWindow.DataContext = addItemViewModel;
             addItemWindow.Show();
         });
@@ -78,6 +76,10 @@ public class MainWindowViewModel : ViewModelBase
             if (selectedItem != null)
             {
                 Items.Remove(selectedItem);
+                if (ItemsCopy.Contains(selectedItem))
+                {
+                    ItemsCopy.Remove(selectedItem);
+                }
             }
         });
         
@@ -88,7 +90,7 @@ public class MainWindowViewModel : ViewModelBase
             {
                 // Créer une nouvelle fenêtre AddItem et donne la liste d'items et l'élément sélectionné
                 var addItemWindow = new AddItemWindow();
-                var addItemViewModel = new AddItemWindowViewModel(Items, selectedItem);
+                var addItemViewModel = new AddItemWindowViewModel(Items, ItemsCopy, selectedItem, addItemWindow);
                 addItemWindow.DataContext = addItemViewModel;
                 addItemWindow.Show();
             }
@@ -96,18 +98,10 @@ public class MainWindowViewModel : ViewModelBase
     }
     
     /* Sort information */
-    private bool _sortInfoVisible;
-    public bool SortInfoVisible
-    {
-        get => _sortInfoVisible;
-        set => this.RaiseAndSetIfChanged(ref _sortInfoVisible, value);
-    }
-    
     private string _filterText;
     public string FilterText
     {
         get => _filterText;
         set => this.RaiseAndSetIfChanged(ref _filterText, value);
     }
-    
 }

@@ -21,33 +21,43 @@ public partial class MainWindow : Window
 
     public void DeleteButton(object? sender, RoutedEventArgs e)
     {
+        var viewModel = DataContext as MainWindowViewModel;
         var item = (sender as Button)?.DataContext as Item;
         if (item != null)
         {
-            (DataContext as MainWindowViewModel)?.Items.Remove(item);
+            viewModel.Items.Remove(item);
+            viewModel.ItemsCopy.Remove(item);
         }
     }
 
     private void ShowPopup(object? sender, RoutedEventArgs e)
     {
-        (DataContext as MainWindowViewModel)?.ItemsCopy.Clear();
-        foreach (var item in (DataContext as MainWindowViewModel)?.Items)
+        var viewModel = DataContext as MainWindowViewModel;
+        viewModel.ItemsCopy.Clear();
+        foreach (var item in viewModel.Items)
         {
-            (DataContext as MainWindowViewModel)?.ItemsCopy.Add(item);
+            viewModel.ItemsCopy.Add(item);
         }
-        
+
         var sortDataGrid = new SortDataGrid();
-        var sortDataGridViewModel = new SortDataGridViewModel((DataContext as MainWindowViewModel)?.Items, sortDataGrid);
+        var sortDataGridViewModel = new SortDataGridViewModel(viewModel.Items, sortDataGrid);
         sortDataGrid.DataContext = sortDataGridViewModel;
         sortDataGrid.ShowDialog(this);
         sortDataGrid.Closed += (sender, e) =>
         {
             if (sortDataGridViewModel.FilteredItems != null)
             {
-                (DataContext as MainWindowViewModel)?.Items.Clear();
+                var test = sortDataGridViewModel.SelectedGrafcet.ToString();
+                var viewModel = DataContext as MainWindowViewModel;
+                if (viewModel != null)
+                {
+                    viewModel.FilterText = test;
+                }
+
+                viewModel.Items.Clear();
                 foreach (var item in sortDataGridViewModel.FilteredItems)
                 {
-                    (DataContext as MainWindowViewModel)?.Items.Add(item);
+                    viewModel.Items.Add(item);
                 }
             }
         };

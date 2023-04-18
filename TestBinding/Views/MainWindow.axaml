@@ -133,7 +133,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            </Grid>
+        </Grid>
         
         <!-- Footer -->
         <Grid Grid.Row="3" ColumnDefinitions="Auto,*,Auto, Auto" Margin="8">
