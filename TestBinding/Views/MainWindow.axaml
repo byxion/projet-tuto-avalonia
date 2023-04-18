@@ -3,21 +3,27 @@
         xmlns:vm="using:TestBinding.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:TestBinding.Views"
+        xmlns:visualBasic="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic.Core"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         Width="800" Height="450"
         x:Class="TestBinding.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Title="TestBinding"
         
-        TransparencyLevelHint="AcrylicBlur"
-        Background="Transparent"
-        ExtendClientAreaToDecorationsHint="True">
+        xmlns:interactivity="https://github.com/avaloniaui/xaml-interactivity"
+        xmlns:behaviors="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml"
+>
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
+    
+    <Window.Resources>
+        <views:CloseVisibilityConverter x:Key="CloseVisibilityConverter"/>
+    </Window.Resources>
 
     <Window.Styles>
         <Style Selector="Grid.Container">
@@ -31,7 +37,7 @@
         </Style>
         <Style Selector="DataGrid">
             <Setter Property="RowBackground" Value="DarkGray"></Setter>
-            <Setter Property="AlternatingRowBackground" Value="DimGray"></Setter>
+            <Setter Property="AlternatingRowBackground" Value="WhiteSmoke"></Setter>
         </Style>
         <Style Selector="Button.ActionButton">
             <Setter Property="Background" Value="Transparent"></Setter>
@@ -44,24 +50,50 @@
         </Style>
     </Window.Styles>
     
-    <Grid RowDefinitions="Auto, *, Auto" Classes="Container">
+    
+    <Grid RowDefinitions="Auto, Auto, *, Auto" Classes="Container">
+        <!-- Menu -->
+        <DockPanel Grid.Row="0" Classes="Menu">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open..."/>
+                    <Separator/>
+                    <MenuItem Header="_Exit"/>
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                    <MenuItem Header="Copy"/>
+                    <MenuItem Header="Paste"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        
         <!-- Header -->
-        <Grid Grid.Row="0" Height="40" ColumnDefinitions="*" Classes="Header">
+        <Grid Grid.Row="1" Height="40" ColumnDefinitions="*" Classes="Header">
              <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Label Content="{Binding Title}"/>
             </StackPanel>
         </Grid>
         
         <!-- Diagramme -->
-        <Grid Grid.Row="1">
-            <DataGrid Margin="20,10" Items="{Binding Items}" x:Name="MyDataGrid"
+        <Grid Grid.Row="2">
+            <DataGrid Margin="20,10" Items="{Binding Items}" 
+                      x:Name="MyDataGrid"
                       SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                       x:CompileBindings="False"
                       Background="Transparent"
                       BorderThickness="0">
                 <DataGrid.Columns>
                         <DataGridTextColumn Header="Grafcet" Width="*" IsReadOnly="True" Binding="{Binding Grafcet}" />
-                        <DataGridTextColumn Header="Type" IsReadOnly="True" Binding="{Binding Type}" />
+                        
+                        <DataGridTemplateColumn Header="Validation">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                        <Image Source="../Assets/icon_validate.png" Width="16" Height="16" IsVisible="{Binding Type}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        
                         <DataGridTextColumn Header="Libellé" Width="2*" IsReadOnly="True" Binding="{Binding Libelle}" />
                         <DataGridTemplateColumn Header="">
                             <DataGridTemplateColumn.CellTemplate>
@@ -69,17 +101,17 @@
                                     <Button Content="X"
                                             Background="Transparent"
                                             BorderThickness="0"
-                                            Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}, Path=Background}"
+                                            IsVisible="{Binding ElementName=MyDataGrid, Converter={StaticResource CloseVisibilityConverter}}"
                                             Click="DeleteButton"/> 
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-        </Grid>
+            </Grid>
         
         <!-- Footer -->
-        <Grid Grid.Row="2" ColumnDefinitions="Auto,*,Auto, Auto" Margin="8">
+        <Grid Grid.Row="3" ColumnDefinitions="Auto,*,Auto, Auto" Margin="8">
             <Button Command="{Binding AddButtonClicked}" Classes="ActionButton" Grid.Column="0">Ajouter</Button>
             <Button Command="{Binding DeleteButtonClick}" Classes="ActionButton" Grid.Column="2" Content="Supprimer" />
             <Button Command="{Binding EditButtonClicked}" Classes="ActionButton" Grid.Column="3">Modifier</Button>

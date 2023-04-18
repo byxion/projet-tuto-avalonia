@@ -1,7 +1,8 @@
-using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
+using Serilog;
 using TestBinding.ViewModels;
 using TestBinding.Models;
 
@@ -17,7 +18,7 @@ public partial class MainWindow : Window
 #endif
         DataContext = new MainWindowViewModel();
     }
-    
+
     public void DeleteButton(object? sender, RoutedEventArgs e)
     {
         var item = (sender as Button)?.DataContext as Item;

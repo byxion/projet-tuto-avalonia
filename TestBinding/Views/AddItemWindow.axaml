@@ -7,9 +7,6 @@
         Width="500" Height="280"
         x:Class="TestBinding.Views.AddItemWindow"
         x:DataType="vm:AddItemWindowViewModel"
-        
-        TransparencyLevelHint="AcrylicBlur"
-        Background="Transparent"
         ExtendClientAreaToDecorationsHint="True">
         
         <Design.DataContext>

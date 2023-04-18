@@ -58,8 +58,8 @@ public class AddItemWindowViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _grafcet, value);
     }
     
-    private string? _type;
-    public string? Type
+    private bool? _type;
+    public bool? Type
     {
         get => _type;
         set => this.RaiseAndSetIfChanged(ref _type, value);
@@ -91,7 +91,7 @@ public class AddItemWindowViewModel : ViewModelBase
             
             // Reset les champs
             Grafcet = "";
-            Type = "";
+            Type = false;
             Libelle = "";
         }
     }

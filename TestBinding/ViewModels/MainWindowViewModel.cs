@@ -22,8 +22,8 @@ public class MainWindowViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _grafcet, value);
     }
     
-    private string _type = "Type 1";
-    public string Type
+    private bool _type = false;
+    public bool Type
     {
         get => _type;
         set => this.RaiseAndSetIfChanged(ref _type, value);
@@ -43,6 +43,8 @@ public class MainWindowViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _selectedItem, value);
     }
     
+    public object? HoveredItem => SelectedItem;
+    
     public ObservableCollection<Item> Items { get; }
     public ICommand AddButtonClicked { get; }
     public ICommand DeleteButtonClick { get; }
@@ -51,10 +53,9 @@ public class MainWindowViewModel : ViewModelBase
     {
         Items = new ObservableCollection<Item>
         {
-            new Item { Grafcet = "Grafcet 1", Type = "Type 2", Libelle = "Libellé 4" },
-            new Item { Grafcet = "Grafcet 2", Type = "Type 3", Libelle = "Libellé 1" },
-            new Item { Grafcet = "Grafcet 3", Type = "Type 1", Libelle = "Libellé 2" },
-            new Item { Grafcet = "Grafcet 4", Type = "Type 4", Libelle = "Libellé 3" }
+            new Item { Grafcet = "Grafcet 1", Type = true, Libelle = "Libellé 4" },
+            new Item { Grafcet = "Grafcet 2", Type = true, Libelle = "Libellé 1" },
+            new Item { Grafcet = "Grafcet 3", Type = false, Libelle = "Libellé 2" }
         };
         
         AddButtonClicked = ReactiveCommand.Create(() =>
@@ -89,6 +90,5 @@ public class MainWindowViewModel : ViewModelBase
                 addItemWindow.Show();
             }
         });
-        
     }
 }
