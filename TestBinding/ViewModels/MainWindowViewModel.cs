@@ -1,6 +1,8 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Avalonia.Controls;
 using ReactiveUI;
+using Serilog;
 using TestBinding.Views;
 using TestBinding.Models;
 
@@ -46,6 +48,7 @@ public class MainWindowViewModel : ViewModelBase
     public object? HoveredItem => SelectedItem;
     
     public ObservableCollection<Item> Items { get; }
+    public ObservableCollection<Item> ItemsCopy { get; set; } = new();
     public ICommand AddButtonClicked { get; }
     public ICommand DeleteButtonClick { get; }
     public ICommand EditButtonClicked { get; }
@@ -91,4 +94,20 @@ public class MainWindowViewModel : ViewModelBase
             }
         });
     }
+    
+    /* Sort information */
+    private bool _sortInfoVisible;
+    public bool SortInfoVisible
+    {
+        get => _sortInfoVisible;
+        set => this.RaiseAndSetIfChanged(ref _sortInfoVisible, value);
+    }
+    
+    private string _filterText;
+    public string FilterText
+    {
+        get => _filterText;
+        set => this.RaiseAndSetIfChanged(ref _filterText, value);
+    }
+    
 }

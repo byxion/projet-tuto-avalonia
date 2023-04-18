@@ -10,12 +10,10 @@ public class CloseVisibilityConverter : IValueConverter
     {
         if (value is Item item)
         {
-            Log.Information("CloseVisibilityConverter: {item}", item);
             return true;
         }
         else
         {
-            Log.Information("CloseVisibilityConverter: {value}", value);
             return true;
         }
     }

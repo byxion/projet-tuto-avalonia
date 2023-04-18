@@ -23,6 +23,7 @@
     
     <Window.Resources>
         <views:CloseVisibilityConverter x:Key="CloseVisibilityConverter"/>
+        <views:FilterIsVisibleConverter x:Key="FilterIsVisibleConverter"/>
     </Window.Resources>
 
     <Window.Styles>
@@ -83,29 +84,53 @@
                       Background="Transparent"
                       BorderThickness="0">
                 <DataGrid.Columns>
-                        <DataGridTextColumn Header="Grafcet" Width="*" IsReadOnly="True" Binding="{Binding Grafcet}" />
-                        
-                        <DataGridTemplateColumn Header="Export">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                        <Image Source="../Assets/icon_validate.png" Width="16" Height="16" IsVisible="{Binding Export}"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                    <!-- Colonne Grafcet avec icône -->
+                    <DataGridTemplateColumn Width="*">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Text="Grafcet" VerticalAlignment="Center"/>
+                                    <Button Content="&#x1F50D;" Background="Transparent" BorderThickness="0" Margin="5,0,0,0" 
+                                            Click="ShowPopup"/>
+                                    <StackPanel Orientation="Horizontal" IsVisible="{Binding ElementName=MyDataGrid, Converter={StaticResource FilterIsVisibleConverter}}">
+                                        <TextBlock Text="{Binding FilterText}" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                                        <Button Content="X" Margin="5,0,0,0" Click="ResetFilterButton"/>
+                                    </StackPanel>
 
-                        
-                        <DataGridTextColumn Header="Libellé" Width="2*" IsReadOnly="True" Binding="{Binding Libelle}" />
-                        <DataGridTemplateColumn Header="">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Content="X"
-                                            Background="Transparent"
-                                            BorderThickness="0"
-                                            IsVisible="{Binding ElementName=MyDataGrid, Converter={StaticResource CloseVisibilityConverter}}"
-                                            Click="DeleteButton"/> 
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Grafcet}" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    
+                    <!-- Colonne Export avec validation ou non -->
+                    <DataGridTemplateColumn Header="Export">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                    <Image Source="../Assets/icon_validate.png" Width="16" Height="16" IsVisible="{Binding Export}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <!-- Colonne libellé simple -->
+                    <DataGridTextColumn Header="Libellé" Width="2*" IsReadOnly="True" Binding="{Binding Libelle}" />
+                    
+                    <!-- Colonne pour supprimer -->
+                    <DataGridTemplateColumn Header="">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="X"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        IsVisible="{Binding ElementName=MyDataGrid, Converter={StaticResource CloseVisibilityConverter}}"
+                                        Click="DeleteButton"/> 
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
             </Grid>
