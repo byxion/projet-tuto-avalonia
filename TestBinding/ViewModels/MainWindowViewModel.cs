@@ -104,4 +104,11 @@ public class MainWindowViewModel : ViewModelBase
         get => _filterText;
         set => this.RaiseAndSetIfChanged(ref _filterText, value);
     }
+    
+    private bool _isVisible;
+    public bool IsVisible
+    {
+        get => _isVisible;
+        set => this.RaiseAndSetIfChanged(ref _isVisible, value);
+    }
 }

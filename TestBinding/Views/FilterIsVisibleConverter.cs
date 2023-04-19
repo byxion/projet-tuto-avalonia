@@ -9,11 +9,7 @@ public class FilterIsVisibleConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (value is DataGrid dataGrid)
-        {
-            return true;
-        }
-        return true;
+        return !((bool) value);
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

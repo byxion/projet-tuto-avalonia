@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using NP.Utilities;
 using Serilog;
 using TestBinding.ViewModels;
 using TestBinding.Models;
@@ -33,42 +34,50 @@ public partial class MainWindow : Window
     private void ShowPopup(object? sender, RoutedEventArgs e)
     {
         var viewModel = DataContext as MainWindowViewModel;
-        viewModel.ItemsCopy.Clear();
-        foreach (var item in viewModel.Items)
+        if (viewModel != null)
         {
-            viewModel.ItemsCopy.Add(item);
-        }
-
-        var sortDataGrid = new SortDataGrid();
-        var sortDataGridViewModel = new SortDataGridViewModel(viewModel.Items, sortDataGrid);
-        sortDataGrid.DataContext = sortDataGridViewModel;
-        sortDataGrid.ShowDialog(this);
-        sortDataGrid.Closed += (sender, e) =>
-        {
-            if (sortDataGridViewModel.FilteredItems != null)
+            viewModel.ItemsCopy.Clear();
+            foreach (var item in viewModel.Items)
             {
-                var test = sortDataGridViewModel.SelectedGrafcet.ToString();
-                var viewModel = DataContext as MainWindowViewModel;
-                if (viewModel != null)
-                {
-                    viewModel.FilterText = test;
-                }
-
-                viewModel.Items.Clear();
-                foreach (var item in sortDataGridViewModel.FilteredItems)
-                {
-                    viewModel.Items.Add(item);
-                }
+                viewModel.ItemsCopy.Add(item);
             }
-        };
+
+            var sortDataGrid = new SortDataGrid();
+            var sortDataGridViewModel = new SortDataGridViewModel(viewModel.Items, sortDataGrid);
+            sortDataGrid.DataContext = sortDataGridViewModel;
+            sortDataGrid.ShowDialog(this);
+            sortDataGrid.Closed += (sender, e) =>
+            {
+                if (sortDataGridViewModel.FilteredItems != null)
+                {
+                    string selectedGrafcet = sortDataGridViewModel.SelectedGrafcet;
+                    var viewModel = DataContext as MainWindowViewModel;
+                    if (viewModel != null)
+                    {
+                        viewModel.FilterText = selectedGrafcet;
+                    }
+
+                    viewModel.Items.Clear();
+                    foreach (var item in sortDataGridViewModel.FilteredItems)
+                    {
+                        viewModel.Items.Add(item);
+                    }
+                }
+            };
+        }
     }
     
     private void ResetFilterButton(object? sender, RoutedEventArgs e)
     {
-        (DataContext as MainWindowViewModel)?.Items.Clear();
-        foreach (var item in (DataContext as MainWindowViewModel)?.ItemsCopy)
+        var viewModel = DataContext as MainWindowViewModel;
+        if (viewModel != null && !viewModel.ItemsCopy.IsNullOrEmpty())
         {
-            (DataContext as MainWindowViewModel)?.Items.Add(item);
+            viewModel.Items.Clear();
+            viewModel.FilterText = "";
+            foreach (var item in viewModel.ItemsCopy)
+            {
+                viewModel.Items.Add(item);
+            }
         }
     }
 }
