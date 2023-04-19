@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:TestBinding.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TestBinding.Components.DataGridComponent"
+             x:DataType="vm:DataGridViewModel">
+    
+    <UserControl.DataContext>
+        <vm:DataGridViewModel />
+    </UserControl.DataContext>
+    
+    <DataGrid Margin="20,10" Items="{Binding Items}" 
+              x:Name="MyDataGridComponent"
+              SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+              x:CompileBindings="False"
+              Background="Transparent"
+              BorderThickness="0">
+    </DataGrid>
+</UserControl>

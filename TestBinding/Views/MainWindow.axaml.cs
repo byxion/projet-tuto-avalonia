@@ -4,6 +4,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using NP.Utilities;
 using Serilog;
+using TestBinding.Components;
 using TestBinding.ViewModels;
 using TestBinding.Models;
 
