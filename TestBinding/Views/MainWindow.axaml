@@ -133,15 +133,16 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>-->
+            
             <!-- Put user control DataGridComponent -->
-            <components:DataGridComponent Headers="Grafcet,Export,Libelle" />
+            <components:DataGridComponent Headers="Grafcet,Export,Libelle,Nouvelle"  />
 
         </Grid>
         
         <!-- Footer -->
         <Grid Grid.Row="3" ColumnDefinitions="Auto,*,Auto, Auto" Margin="8">
             <Button Command="{Binding AddButtonClicked}" Classes="ActionButton" Grid.Column="0">Ajouter</Button>
-            <Button Command="{Binding DeleteButtonClick}" Classes="ActionButton" Grid.Column="2" Content="Supprimer" />
+            <Button Command="{Binding DeleteButtonClick}" Classes="ActionButton" Grid.Column="2" Content="Supprimer"/>
             <Button Command="{Binding EditButtonClicked}" Classes="ActionButton" Grid.Column="3">Modifier</Button>
         </Grid>
     </Grid>

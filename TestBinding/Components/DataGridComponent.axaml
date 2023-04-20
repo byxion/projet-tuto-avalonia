@@ -11,9 +11,8 @@
         <vm:DataGridViewModel />
     </UserControl.DataContext>
     
-    <DataGrid Margin="20,10" Items="{Binding Items}" 
+    <DataGrid Margin="20,10" 
               x:Name="MyDataGridComponent"
-              SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
               x:CompileBindings="False"
               Background="Transparent"
               BorderThickness="0">

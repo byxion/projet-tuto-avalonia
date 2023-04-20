@@ -21,20 +21,21 @@ public partial class DataGridComponent : UserControl
     public static readonly StyledProperty<string> HeadersProperty =
         AvaloniaProperty.Register<DataGridComponent, string>(nameof(Headers));
 
-    public ObservableCollection<Item> Items { get; set; } = new()
+    public ObservableCollection<Item> ItemsGrid { get; set; } = new()
     {
-        new Item { Grafcet = "Grafcet 1", Export = true, Libelle = "Libellé 4" },
-        new Item { Grafcet = "Grafcet 2", Export = true, Libelle = "Libellé 1" },
-        new Item { Grafcet = "Grafcet 3", Export = false, Libelle = "Libellé 2" }
+        new Item(){Grafcet = "Graf1", Export = true, Libelle = "Lib1",},
+        new Item(){Grafcet = "Graf2", Export = true, Libelle = "Lib2",},
+        new Item(){Grafcet = "Graf3", Export = false, Libelle = "Lib3",}
     };
     
     public DataGridComponent()
     {
         InitializeComponent();
+        
         /* Defaut si aucune colonnes mise dans le xaml */
         Headers = "Grafcet,Export,Libellé";
-        MyDataGridComponent = this.FindControl<DataGrid>("MyDataGridComponent");
         
+        MyDataGridComponent = this.FindControl<DataGrid>("MyDataGridComponent");
         this.GetObservable(HeadersProperty).Subscribe(x => UpdateDataGrid());
     }
 
@@ -45,13 +46,19 @@ public partial class DataGridComponent : UserControl
     
     public void UpdateDataGrid()
     {
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Debug()
+            .WriteTo.Console()
+            .CreateLogger();
+        
         if (MyDataGridComponent != null)
         {
             MyDataGridComponent.Columns.Clear();
+            Log.Information("dataGrid is not null {dataGrid}, {header}", MyDataGridComponent.Name , Headers);
         }
         else
         {
-            Log.Error("dataGrid is null{dataGrid}", MyDataGridComponent);
+            Log.Error("dataGrid is null {dataGrid}", MyDataGridComponent);
         }
         foreach (var header in Headers.Split(','))
         {
@@ -62,6 +69,6 @@ public partial class DataGridComponent : UserControl
                 Width = new DataGridLength(1, DataGridLengthUnitType.Star)
             });
         }
-        MyDataGridComponent.Items = Items;
+        MyDataGridComponent.Items = ItemsGrid;
     }
 }
