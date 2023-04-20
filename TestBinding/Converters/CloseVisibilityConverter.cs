@@ -2,7 +2,7 @@ using Avalonia.Data.Converters;
 using Serilog;
 using TestBinding.Models;
 
-namespace TestBinding.Views;
+namespace TestBinding.Converters;
 
 public class CloseVisibilityConverter : IValueConverter
 {

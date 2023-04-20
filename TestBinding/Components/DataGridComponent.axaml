@@ -3,18 +3,99 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:TestBinding.ViewModels"
+             xmlns:converters="clr-namespace:TestBinding.Converters"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="TestBinding.Components.DataGridComponent"
-             x:DataType="vm:DataGridViewModel">
+             x:DataType="vm:DataGridViewModel"
+             x:Name="DataGridComponentWindow">
     
     <UserControl.DataContext>
         <vm:DataGridViewModel />
     </UserControl.DataContext>
     
-    <DataGrid Margin="20,10" 
-              x:Name="MyDataGridComponent"
-              x:CompileBindings="False"
-              Background="Transparent"
-              BorderThickness="0">
-    </DataGrid>
+    <UserControl.Styles>
+        <!-- DataGrid -->
+        <Style Selector="DataGrid">
+            <Setter Property="RowBackground" Value="DarkGray"></Setter>
+            <Setter Property="AlternatingRowBackground" Value="WhiteSmoke"></Setter>
+        </Style>
+        
+        <!-- DataGrid Filter -->
+        <Style Selector="StackPanel.Filter">
+            <Setter Property="Background" Value="#F0EDED"></Setter>
+        </Style>
+        <Style Selector="StackPanel.Filter TextBlock">
+            <Setter Property="Padding" Value="2,5"></Setter>
+            <Setter Property="Foreground" Value="#333638"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+        <Style Selector="StackPanel.Filter Button">
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="CornerRadius" Value="0"></Setter>
+            <Setter Property="Padding" Value="5"></Setter>
+            <Setter Property="Background" Value="#333638"></Setter>
+            <Setter Property="Foreground" Value="#F0EDED"></Setter>
+        </Style>
+        <Style Selector="StackPanel.Filter Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#EC1211"></Setter>
+        </Style>
+        <Style Selector="StackPanel.Filter Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#c90f0e"></Setter>
+        </Style>
+        <!-- Action Button -->
+        <Style Selector="Button.ActionButton">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="BorderBrush" Value="Transparent"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Padding" Value="8"></Setter>
+            <Setter Property="Margin" Value="8"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        </Style>
+    </UserControl.Styles>
+    
+    <UserControl.Resources>
+        <converters:FilterIsVisibleConverter x:Key="FilterIsVisibleConverter"/>
+        <converters:CloseVisibilityConverter x:Key="CloseVisibilityConverter"/>
+        
+        <!-- Column with icon -->
+        <DataTemplate x:Key="ExportTemplate" x:CompileBindings="False">
+            <Image Source="../Assets/icon_validate.png" Width="16" Height="16" IsVisible="{Binding Export}"/>
+        </DataTemplate>
+        
+        <!-- Grafcet column Header -->
+        <DataTemplate x:Key="GrafcetHeaderTemplate" x:CompileBindings="False">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" IsVisible="{Binding !DataContext.IsVisible, ElementName=DataGridComponentWindow, Converter={StaticResource FilterIsVisibleConverter}}">
+                    <TextBlock Text="Grafcet" VerticalAlignment="Center"/>
+                    <Button Content="&#x1F50D;" Background="Transparent" BorderThickness="0" Margin="5,0,0,0" 
+                            Click="ShowPopup"/>
+                </StackPanel>
+                <StackPanel Classes="Filter" Orientation="Horizontal" IsVisible="{Binding DataContext.IsVisible, ElementName=DataGridComponentWindow, Converter={StaticResource FilterIsVisibleConverter}}">
+                    <TextBlock Text="{Binding DataContext.FilterText, ElementName=DataGridComponentWindow}" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                    <Button Content="X" Margin="5,0,0,0" Click="ResetFilterButton" />
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+        <!-- Grafcet column Cell-->
+        <DataTemplate x:Key="GrafcetCellTemplate" x:CompileBindings="False">
+            <TextBlock Text="{Binding Grafcet}" Margin="5,0,0,0" VerticalAlignment="Center"/>
+        </DataTemplate>
+        
+    </UserControl.Resources>
+    
+    <Grid RowDefinitions="*,Auto">
+        <DataGrid Grid.Row="0" Margin="20,10" 
+                  x:Name="MyDataGridComponent"
+                  x:CompileBindings="False"
+                  Background="Transparent"
+                  BorderThickness="0"
+                  SelectedItem="{Binding SelectedItem}">
+        </DataGrid>
+        <Grid Grid.Row="1" ColumnDefinitions="Auto,*,Auto, Auto" Margin="8">
+            <Button Command="{Binding AddButtonClicked}" Classes="ActionButton" Grid.Column="0">Ajouter</Button>
+            <Button Command="{Binding DeleteButtonClick}" Classes="ActionButton" Grid.Column="2" Content="Supprimer"/>
+            <Button Command="{Binding EditButtonClicked}" Classes="ActionButton" Grid.Column="3">Modifier</Button>
+        </Grid>
+    </Grid>
 </UserControl>

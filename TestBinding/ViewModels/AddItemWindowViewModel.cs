@@ -35,6 +35,8 @@ public class AddItemWindowViewModel : ViewModelBase
         Items = new ObservableCollection<Item>();
         EditMode = false;
     }
+    
+    /* Add an Item */
     public AddItemWindowViewModel(ObservableCollection<Item> items, ObservableCollection<Item> itemsCopy, Window window)
     {
         Items = items;
@@ -42,6 +44,8 @@ public class AddItemWindowViewModel : ViewModelBase
         EditMode = false;
         Window = window; /* Propre ? */
     }
+    
+    /* Edit an Item */
     public AddItemWindowViewModel(ObservableCollection<Item> items, ObservableCollection<Item> itemCopy, Item item, Window window)
     {
         Items = items;
@@ -87,17 +91,17 @@ public class AddItemWindowViewModel : ViewModelBase
 
         if (EditMode)
         {
-            // Remplace l'item à l'index
+            // Replace the item in the list 
             Items[Index] = item;
             ItemsCopy[IndexCopy] = item;
         }
         else
         {
-            // Ajoute l'item à la fin de la liste
+            // Add the item in the list
             Items.Add(item);
             ItemsCopy.Add(item);
             
-            // Reset les champs
+            // Reset the fields
             Grafcet = "";
             Export = false;
             Libelle = "";

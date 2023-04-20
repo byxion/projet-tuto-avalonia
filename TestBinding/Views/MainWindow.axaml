@@ -3,8 +3,6 @@
         xmlns:vm="using:TestBinding.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="clr-namespace:TestBinding.Views"
-        xmlns:visualBasic="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic.Core"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         Width="800" Height="450"
         x:Class="TestBinding.Views.MainWindow"
@@ -12,8 +10,6 @@
         x:Name="MainWindowXaml"
         Title="TestBinding"
         
-        xmlns:interactivity="https://github.com/avaloniaui/xaml-interactivity"
-        xmlns:behaviors="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml"
         xmlns:components="clr-namespace:TestBinding.Components">
 
     <Design.DataContext>
@@ -21,11 +17,6 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-    
-    <Window.Resources>
-        <views:CloseVisibilityConverter x:Key="CloseVisibilityConverter"/>
-        <views:FilterIsVisibleConverter x:Key="FilterIsVisibleConverter"/>
-    </Window.Resources>
 
     <Window.Styles>
         <Style Selector="Grid.Container">
@@ -36,19 +27,6 @@
         </Style>
         <Style Selector="Label">
             <Setter Property="FontSize" Value="22"></Setter>
-        </Style>
-        <Style Selector="DataGrid">
-            <Setter Property="RowBackground" Value="DarkGray"></Setter>
-            <Setter Property="AlternatingRowBackground" Value="WhiteSmoke"></Setter>
-        </Style>
-        <Style Selector="Button.ActionButton">
-            <Setter Property="Background" Value="Transparent"></Setter>
-            <Setter Property="BorderBrush" Value="Transparent"></Setter>
-            <Setter Property="BorderThickness" Value="0"></Setter>
-            <Setter Property="Padding" Value="8"></Setter>
-            <Setter Property="Margin" Value="8"></Setter>
-            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-            <Setter Property="VerticalAlignment" Value="Center"></Setter>
         </Style>
     </Window.Styles>
     
@@ -78,72 +56,12 @@
         
         <!-- Diagramme -->
         <Grid Grid.Row="2">
-            <!--<DataGrid Margin="20,10" Items="{Binding Items}" 
-                      x:Name="MyDataGrid"
-                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                      x:CompileBindings="False"
-                      Background="Transparent"
-                      BorderThickness="0">
-                <DataGrid.Columns>
-                    ~1~ Colonne Grafcet avec icône @1@
-                    <DataGridTemplateColumn Width="*">
-                        <DataGridTemplateColumn.HeaderTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock Text="Grafcet" VerticalAlignment="Center"/>
-                                    <Button Content="&#x1F50D;" Background="Transparent" BorderThickness="0" Margin="5,0,0,0" 
-                                            Click="ShowPopup"/>
-                                    <StackPanel Orientation="Horizontal" IsVisible="{Binding DataContext.IsVisible, ElementName=MainWindowXaml, Converter={StaticResource FilterIsVisibleConverter}}">
-                                        <TextBlock Text="{Binding DataContext.FilterText, ElementName=MainWindowXaml}" Margin="5,0,0,0" VerticalAlignment="Center"/>
-                                        <Button Content="X" Margin="5,0,0,0" Click="ResetFilterButton"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.HeaderTemplate>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Grafcet}" Margin="5,0,0,0" VerticalAlignment="Center"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    
-                    ~1~ Colonne Export avec validation ou non @1@
-                    <DataGridTemplateColumn Header="Export">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                    <Image Source="../Assets/icon_validate.png" Width="16" Height="16" IsVisible="{Binding Export}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-
-                    ~1~ Colonne libellé simple @1@
-                    <DataGridTextColumn Header="Libellé" Width="2*" IsReadOnly="True" Binding="{Binding Libelle}" />
-                    
-                    ~1~ Colonne pour supprimer @1@
-                    <DataGridTemplateColumn Header="">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="X"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        IsVisible="{Binding ElementName=MyDataGrid, Converter={StaticResource CloseVisibilityConverter}}"
-                                        Click="DeleteButton"/> 
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>-->
-            
-            <!-- Put user control DataGridComponent -->
-            <components:DataGridComponent Headers="Grafcet,Export,Libelle,Nouvelle"  />
-
+            <components:DataGridComponent Headers="Grafcet,Export,Libelle"  />
         </Grid>
         
         <!-- Footer -->
         <Grid Grid.Row="3" ColumnDefinitions="Auto,*,Auto, Auto" Margin="8">
-            <Button Command="{Binding AddButtonClicked}" Classes="ActionButton" Grid.Column="0">Ajouter</Button>
-            <Button Command="{Binding DeleteButtonClick}" Classes="ActionButton" Grid.Column="2" Content="Supprimer"/>
-            <Button Command="{Binding EditButtonClicked}" Classes="ActionButton" Grid.Column="3">Modifier</Button>
+            <Label>Footer</Label>
         </Grid>
     </Grid>
 </Window>
