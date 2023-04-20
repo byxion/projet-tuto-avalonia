@@ -3,8 +3,6 @@
         xmlns:vm="using:TestBinding.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="clr-namespace:TestBinding.Views"
-        xmlns:visualBasic="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic.Core"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         Width="800" Height="450"
         x:Class="TestBinding.Views.MainWindow"
@@ -12,9 +10,7 @@
         x:Name="MainWindowXaml"
         Title="TestBinding"
         
-        xmlns:interactivity="https://github.com/avaloniaui/xaml-interactivity"
-        xmlns:behaviors="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml"
->
+        xmlns:converters="clr-namespace:TestBinding.Converters">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -23,8 +19,8 @@
     </Design.DataContext>
     
     <Window.Resources>
-        <views:CloseVisibilityConverter x:Key="CloseVisibilityConverter"/>
-        <views:FilterIsVisibleConverter x:Key="FilterIsVisibleConverter"/>
+        <converters:CloseVisibilityConverter x:Key="CloseVisibilityConverter"/>
+        <converters:FilterIsVisibleConverter x:Key="FilterIsVisibleConverter"/>
     </Window.Resources>
 
     <Window.Styles>
@@ -104,7 +100,8 @@
                       SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                       x:CompileBindings="False"
                       Background="Transparent"
-                      BorderThickness="0">
+                      BorderThickness="0"
+                      LoadingRow="LogDataGrid_LoadingRow">
                 <DataGrid.Columns>
                     <!-- Colonne Grafcet avec icône -->
                     <DataGridTemplateColumn Width="*">
@@ -148,10 +145,10 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="X"
+                                        x:Name="ButtonDelete"
                                         Background="Transparent"
                                         BorderThickness="0"
-                                        IsVisible="{Binding ElementName=MyDataGrid, Converter={StaticResource CloseVisibilityConverter}}"
-                                        Click="DeleteButton"/> 
+                                        Click="DeleteButton"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -167,3 +164,5 @@
         </Grid>
     </Grid>
 </Window>
+
+

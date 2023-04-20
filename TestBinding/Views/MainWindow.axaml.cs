@@ -80,4 +80,26 @@ public partial class MainWindow : Window
             }
         }
     }
+    
+    private void LogDataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+    {
+        e.Row.PointerEnter += LogDataGrid_PointerEnter;
+    }
+
+    private void LogDataGrid_PointerEnter(object sender, PointerEventArgs e)
+    {
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .CreateLogger();
+        var row = sender as DataGridRow;
+        var rowData = row?.DataContext;
+        Log.Information("Hover {item}", rowData);
+
+        if (rowData is Item item)
+        {
+            // Your code to execute when hovering over a row
+            Log.Information("Hover {item}", item);
+            
+        }
+    }
 }

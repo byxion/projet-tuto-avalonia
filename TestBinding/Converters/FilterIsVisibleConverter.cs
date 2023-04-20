@@ -3,7 +3,7 @@ using System.Globalization;
 using Avalonia.Controls;
 using Avalonia.Data.Converters;
 
-namespace TestBinding.Views;
+namespace TestBinding.Converters;
 
 public class FilterIsVisibleConverter : IValueConverter
 {
