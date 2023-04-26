@@ -37,6 +37,9 @@
             <Setter Property="RowBackground" Value="DarkGray"></Setter>
             <Setter Property="AlternatingRowBackground" Value="WhiteSmoke"></Setter>
         </Style>
+        <Style Selector="DataGridColumnHeader:nth-child(3)">
+            <Setter Property="SeparatorBrush" Value="Transparent" />
+        </Style>
         <Style Selector="Button.ActionButton">
             <Setter Property="Background" Value="Transparent"></Setter>
             <Setter Property="BorderBrush" Value="Transparent"></Setter>
@@ -101,7 +104,8 @@
                       x:CompileBindings="False"
                       Background="Transparent"
                       BorderThickness="0"
-                      LoadingRow="LogDataGrid_LoadingRow">
+                      LoadingRow="LogDataGrid_LoadingRow"
+                      RowHeight="25">
                 <DataGrid.Columns>
                     <!-- Colonne Grafcet avec icône -->
                     <DataGridTemplateColumn Width="*">
@@ -141,13 +145,14 @@
                     <DataGridTextColumn Header="Libellé" Width="2*" IsReadOnly="True" Binding="{Binding Libelle}" />
                     
                     <!-- Colonne pour supprimer -->
-                    <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="X"
-                                        x:Name="ButtonDelete"
+                                        x:Name="DeleteButton"
                                         Background="Transparent"
                                         BorderThickness="0"
+                                        IsVisible="False"
                                         Click="DeleteButton"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

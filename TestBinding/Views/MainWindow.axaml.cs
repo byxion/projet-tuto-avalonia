@@ -6,6 +6,7 @@ using NP.Utilities;
 using Serilog;
 using TestBinding.ViewModels;
 using TestBinding.Models;
+using Avalonia.VisualTree;
 
 namespace TestBinding.Views;
 
@@ -84,22 +85,30 @@ public partial class MainWindow : Window
     private void LogDataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
     {
         e.Row.PointerEnter += LogDataGrid_PointerEnter;
+        e.Row.PointerLeave += LogDataGrid_PointerLeave;
     }
 
     private void LogDataGrid_PointerEnter(object sender, PointerEventArgs e)
     {
-        Log.Logger = new LoggerConfiguration()
-            .WriteTo.Console()
-            .CreateLogger();
         var row = sender as DataGridRow;
         var rowData = row?.DataContext;
-        Log.Information("Hover {item}", rowData);
 
-        if (rowData is Item item)
+        if (rowData is Item)
         {
-            // Your code to execute when hovering over a row
-            Log.Information("Hover {item}", item);
-            
+            var Button = row.FindDescendantOfType<Button>();
+            Button.IsVisible = true;
+        }
+    }
+    
+    private void LogDataGrid_PointerLeave(object sender, PointerEventArgs e)
+    {
+        var row = sender as DataGridRow;
+        var rowData = row?.DataContext;
+        
+        if (rowData is Item)
+        {
+            var Button = row.FindDescendantOfType<Button>();
+            Button.IsVisible = false;
         }
     }
 }
