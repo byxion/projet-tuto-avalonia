@@ -82,6 +82,16 @@
             <TextBlock Text="{Binding Grafcet}" Margin="5,0,0,0" VerticalAlignment="Center"/>
         </DataTemplate>
         
+        <!-- Delete column -->
+        <DataTemplate x:Key="DeleteCellTemplate">
+            <Button Content="X"
+                    x:Name="DeleteButton"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    IsVisible="False"
+                    Click="DeleteButton"/>
+        </DataTemplate>
+        
     </UserControl.Resources>
     
     <Grid RowDefinitions="*,Auto">
@@ -90,7 +100,8 @@
                   x:CompileBindings="False"
                   Background="Transparent"
                   BorderThickness="0"
-                  SelectedItem="{Binding SelectedItem}">
+                  SelectedItem="{Binding SelectedItem}"
+                  RowHeight="25">
         </DataGrid>
         <Grid Grid.Row="1" ColumnDefinitions="Auto,*,Auto, Auto" Margin="8">
             <Button Command="{Binding AddButtonClicked}" Classes="ActionButton" Grid.Column="0">Ajouter</Button>

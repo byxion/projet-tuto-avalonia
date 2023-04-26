@@ -8,6 +8,7 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.Templates;
 using NP.Utilities;
+using ReactiveUI;
 using Serilog;
 using TestBinding.Models;
 using TestBinding.ViewModels;
@@ -100,6 +101,10 @@ public partial class DataGridComponent : UserControl
                 });
             }
         }
+        DataGridTemplateColumn deleteColumn = new DataGridTemplateColumn();
+        deleteColumn.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+        deleteColumn.CellTemplate = (DataTemplate)Resources["DeleteCellTemplate"];
+        MyDataGridComponent.Columns.Add(deleteColumn);
         MyDataGridComponent.Items = ItemsGrid;
     }
     
